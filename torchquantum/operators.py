@@ -68,6 +68,7 @@ __all__ = [
     "ECR",
     "RCCX",
     "RC3X",
+    "GlobalPhase",
 ]
 
 
@@ -154,6 +155,7 @@ class Operator(tq.QuantumModule):
         "TrainableUnitary",
         "TrainableUnitaryStrict",
         "SingleExcitation",
+        "GlobalPhase",
     ]
 
     @property
@@ -1344,6 +1346,17 @@ class ECR(Operation, metaclass=ABCMeta):
     def _matrix(cls, params):
         return cls.matrix
 
+class GlobalPhase(Operation, metaclass=ABCMeta):
+    """Class for Global Phase Gate."""
+
+    num_params = 1
+    num_wires = 1
+    matrix = mat_dict["global_phase"]
+    func = staticmethod(tqf.global_phase)
+
+    @classmethod
+    def _matrix(cls, params):
+        return cls.matrix
 
 H = Hadamard
 SH = SHadamard
@@ -1417,4 +1430,5 @@ op_name_dict = {
     "echoedcrossresonance": ECR,
     "rccx": RCCX,
     "rc3x": RC3X,
+    "global_phase": GlobalPhase,
 }

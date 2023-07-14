@@ -85,6 +85,7 @@ __all__ = [
     "echoedcrossresonance",
     "rccx",
     "rc3x",
+    "global_phase",
 ]
 
 
@@ -961,6 +962,24 @@ def cu3_matrix(params):
 
     return matrix.squeeze(0)
 
+def global_phase_matrix(params: torch.Tensor) -> torch.Tensor:
+    """Compute unitary matrix for the global phase gate.
+
+    Args:
+        phase: The value of phase it takes.
+
+    Returns:
+        The computed unitary matrix.
+
+    """
+    phase = params.type(C_DTYPE)
+
+    co = torch.cos(theta / 2)
+    si = torch.sin(theta / 2)
+
+    return torch.stack(
+        [torch.exp(1j * phase)], dim=-1
+    ).squeeze(0)
 
 def qubitunitary_matrix(params):
     """Compute unitary matrix for Qubitunitary gate.
@@ -1232,6 +1251,7 @@ mat_dict = {
     "multicnot": multicnot_matrix,
     "multixcnot": multixcnot_matrix,
     "singleexcitation": singleexcitation_matrix,
+    "global_phase": global_phase_matrix,
 }
 
 
@@ -3346,6 +3366,52 @@ def rc3x(
         inverse=inverse,
     )
 
+def global_phase(
+    q_device,
+    wires,
+    params=None,
+    n_wires=None,
+    static=False,
+    parent_graph=None,
+    inverse=False,
+    comp_method="bmm",
+):
+    """Perform the global phase gate.
+    https://qiskit.org/documentation/stubs/qiskit.circuit.library.GlobalPhaseGate.html
+
+    Args:
+        q_device (tq.QuantumDevice): The QuantumDevice.
+        wires (Union[List[int], int]): Which qubit(s) to apply the gate.
+        params (torch.Tensor, optional): Parameters (if any) of the gate.
+            Default to None.
+        n_wires (int, optional): Number of qubits the gate is applied to.
+            Default to None.
+        static (bool, optional): Whether use static mode computation.
+            Default to False.
+        parent_graph (tq.QuantumGraph, optional): Parent QuantumGraph of
+            current operation. Default to None.
+        inverse (bool, optional): Whether inverse the gate. Default to False.
+        comp_method (bool, optional): Use 'bmm' or 'einsum' method to perform
+        matrix vector multiplication. Default to 'bmm'.
+
+    Returns:
+        None.
+    """
+    name = "global_phase"
+    mat = mat_dict[name]
+    gate_wrapper(
+        name=name,
+        mat=mat,
+        method=comp_method,
+        q_device=q_device,
+        wires=wires,
+        params=params,
+        n_wires=n_wires,
+        static=static,
+        parent_graph=parent_graph,
+        inverse=inverse,
+    )
+
 h = hadamard
 sh = shadamard
 x = paulix
@@ -3431,4 +3497,5 @@ func_name_dict = {
     "echoedcrossresonance": echoedcrossresonance,
     "rccx": rccx,
     "rc3x": rc3x,
+    "global_phase": global_phase,
 }

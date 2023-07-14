@@ -51,6 +51,7 @@ pair_list = [
     {"qiskit": qiskit_gate.ECRGate, "tq": tq.ECR},
     {"qiskit": qiskit_gate.RCCXGate, "tq": tq.RCCX},
     {"qiskit": qiskit_gate.RC3XGate, "tq": tq.RC3X},
+    {"qiskit": qiskit_gate.GlobalPhaseGate, "tq": tq.GlobalPhase},
 ]
 
 import os
