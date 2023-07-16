@@ -28,7 +28,7 @@ In this tutorial, you can learn parameters shift rules and how to use parameters
 
 Previously, our quantum model was based on qiskit and pytorch. Once we did an inference of the model, pytorch will automatically build a computaional graph. We can calculate the gradients of each node in the computational graph in a reversed order based on the chain rule. This is called back propagation.
 <div align="center">
-<img src="https://github.com/mit-han-lab/torchquantum/blob/master/figs/bp.png?raw=true" alt="conv-full-layer" width="300">
+<img src="https://github.com/mit-han-lab/torchquantum/blob/main/figs/bp.png?raw=true" alt="conv-full-layer" width="300">
 </div>
 
 ### Parameters Shift Rules
