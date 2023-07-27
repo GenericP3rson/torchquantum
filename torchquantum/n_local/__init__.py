@@ -11,4 +11,5 @@ __all__ = [
     "TwoLocal",
     "RealAmplitudes",
     "EfficientSU2",
+    "ExcitationPreserving",
 ]

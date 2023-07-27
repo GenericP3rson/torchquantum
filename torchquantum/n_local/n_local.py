@@ -14,6 +14,7 @@ from qiskit.circuit.quantumcircuit import QuantumCircuit
 from qiskit.circuit.quantumregister import QuantumRegister
 from qiskit.circuit import Instruction, Parameter, ParameterVector, ParameterExpression
 from qiskit.exceptions import QiskitError
+from qiskit.circuit.library import BlueprintCircuit
 
 class NLocal(BlueprintCircuit):
     """The n-local circuit class.

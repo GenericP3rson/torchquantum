@@ -11,7 +11,7 @@ from torchquantum.devices import QuantumDevice
 from qiskit.circuit import Gate, Parameter
 
 
-from .n_local import NLocal
+from n_local import NLocal
 from torchquantum.operators import (
     I,
     PauliZ,
@@ -206,11 +206,11 @@ class TwoLocal(NLocal):
             "s": S(),
             "sdg": SDG(),
             "swap": SWAP(),
-            "x": X(),
-            "y": Y(),
-            "z": Z(),
-            "t": T(),
-            "tdg": TDG(),
+            # "x": X(),
+            # "y": Y(),
+            # "z": Z(),
+            # "t": T(),
+            # "tdg": TDG(),
         }
 
         # try to exchange `layer` from a string to a gate instance
@@ -231,7 +231,7 @@ class TwoLocal(NLocal):
                 raise ValueError(f"Unknown layer type`{layer}`.")
             layer = instance
 
-        if isinstance(layer):
+        if isinstance(layer, QuantumDevice):
             circuit = QuantumDevice(layer.num_qubits)
             circuit.append(layer, list(range(layer.num_qubits)))
             return circuit
