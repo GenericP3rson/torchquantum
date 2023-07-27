@@ -390,7 +390,7 @@ class QuantumNode(tq.QuantumModule):
         return x, time_spent
 
 
-def build_nodes(node_archs, act_norm=None) -> torchquantum.QuantumModuleList:
+def build_nodes(node_archs, act_norm=None) -> tq.QuantumModuleList:
     """Build a list of QuantumNode instances based on the given architectures.
 
     Args:
