@@ -28,10 +28,12 @@ import torch.nn as nn
 import numpy as np
 import functools
 import torchquantum.functional as tqf
-import torchquantum.Dfunc as dfunc
+# import torchquantum.Dfunc as dfunc
+import torchquantum.density.density_func as dfunc
 import torchquantum as tq
 import copy
-from torchquantum.states import QuantumState
+# from torchquantum import QuantumState
+from torchquantum import QuantumDevice
 from torchquantum.macro import C_DTYPE, ABC, ABC_ARRAY, INV_SQRT2
 from typing import Union, List, Iterable
 
@@ -88,7 +90,7 @@ class DensityMatrix(nn.Module):
         """
         self.state_list = []
         for i in range(0, bsz):
-            self.state_list.append((1, QuantumState(n_wires)))
+            self.state_list.append((1, QuantumDevice(n_wires)))
 
     def set_calc_by_states(self, val):
         self._calc_by_states = val

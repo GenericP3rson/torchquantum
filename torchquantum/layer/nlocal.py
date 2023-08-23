@@ -30,6 +30,7 @@ from torchquantum.layer.layers import (
     Op1QAllLayer,
     Op2QAllLayer,
     RandomOp1All,
+    Op2QDenseLayer,
 )
 
 __all__ = [
