@@ -67,6 +67,7 @@ __all__ = [
     "SSWAP",
     "CSWAP",
     "Toffoli",
+    "C4X",
     "PhaseShift",
     "Rot",
     "MultiRZ",
@@ -108,6 +109,8 @@ __all__ = [
     "XXPLUSYY",
     "C3X",
     "R",
+    "RCCX",
+    "RC3X",
 ]
 
 
@@ -160,6 +163,7 @@ class Operator(tq.QuantumModule):
         "SSWAP",
         "CSWAP",
         "Toffoli",
+        "C4X",
         "MultiCNOT",
         "MultiXCNOT",
         "Reset",
@@ -177,6 +181,8 @@ class Operator(tq.QuantumModule):
         "CHadamard",
         "DCX",
         "C3X",
+        "RCCX",
+        "RC3X",
     ]
 
     parameterized_ops = [
@@ -856,6 +862,19 @@ class CSWAP(Operation, metaclass=ABCMeta):
         return cls.matrix
 
 
+class C4X(Operation, metaclass=ABCMeta):
+    """Class for C4X Gate."""
+
+    num_params = 0
+    num_wires = 5
+    matrix = mat_dict["c4x"]
+    func = staticmethod(tqf.c4x)
+
+    @classmethod
+    def _matrix(cls, params):
+        return cls.matrix
+
+
 class Toffoli(Operation, metaclass=ABCMeta):
     """Class for Toffoli Gate."""
 
@@ -940,6 +959,27 @@ class MultiRZ(DiagonalOperation, metaclass=ABCMeta):
     def _matrix(cls, params, n_wires):
         return tqf.multirz_matrix(params, n_wires)
 
+class RCCX(Operation, metaclass=ABCMeta):
+    """Class for RCCX Gate."""
+    num_params = 0
+    num_wires = 3
+    matrix = mat_dict["rccx"]
+    func = staticmethod(tqf.rccx)
+    @classmethod
+    def _matrix(cls, params):
+        return cls.matrix
+
+class RC3X(Operation, metaclass=ABCMeta):
+    """Class for RC3X Gate."""
+
+    num_params = 0
+    num_wires = 4
+    matrix = mat_dict["rc3x"]
+    func = staticmethod(tqf.rc3x)
+
+    @classmethod
+    def _matrix(cls, params):
+        return cls.matrix
 
 class RXX(Operation, metaclass=ABCMeta):
     """Class for RXX Gate."""
@@ -1648,6 +1688,7 @@ op_name_dict = {
     "cswap": CSWAP,
     "toffoli": Toffoli,
     "ccx": Toffoli,
+    "c4x": C4X,
     "phaseshift": PhaseShift,
     "rot": Rot,
     "multirz": MultiRZ,
@@ -1695,4 +1736,6 @@ op_name_dict = {
     "csdg": CSDG,
     "csx": CSX,
     "r": R,
+    "rccx": RCCX,
+    "rc3x": RC3X,
 }
