@@ -32,11 +32,10 @@ from enum import IntEnum
 from torchquantum.functional import mat_dict
 from torchquantum.util.quantization.clifford_quantization import CliffordQuantizer
 from abc import ABCMeta
-from ..macro import C_DTYPE, F_DTYPE
+from torchquantum.macro import C_DTYPE, F_DTYPE
 from torchpack.utils.logging import logger
 from typing import Iterable, Union, List
 
-from .op_types import *
 from .hadamard import *
 from .paulix import *
 from .pauliy import *

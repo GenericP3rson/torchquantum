@@ -1,6 +1,6 @@
-from .op_types import *
+from ..op_types import *
 from abc import ABCMeta
-from ..macro import C_DTYPE
+from torchquantum.macro import C_DTYPE
 import torchquantum as tq
 import torch
 from torchquantum.functional import mat_dict
@@ -10,6 +10,7 @@ import torchquantum.functional.functionals as tqf
 class RZ(DiagonalOperation, metaclass=ABCMeta):
     """Class for RZ Gate."""
 
+    name = "rz"
     num_params = 1
     num_wires = 1
     func = staticmethod(tqf.rz)
@@ -22,6 +23,7 @@ class RZ(DiagonalOperation, metaclass=ABCMeta):
 class MultiRZ(DiagonalOperation, metaclass=ABCMeta):
     """Class for Multi-qubit RZ Gate."""
 
+    name = "multirz"
     num_params = 1
     num_wires = AnyWires
     func = staticmethod(tqf.multirz)

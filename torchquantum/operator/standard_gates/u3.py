@@ -1,6 +1,6 @@
-from .op_types import Observable, Operation
+from ..op_types import Observable, Operation
 from abc import ABCMeta
-from ..macro import C_DTYPE
+from torchquantum.macro import C_DTYPE
 import torchquantum as tq
 import torch
 from torchquantum.functional import mat_dict
@@ -10,6 +10,7 @@ import torchquantum.functional.functionals as tqf
 class U3(Operation, metaclass=ABCMeta):
     """Class for U3 gate."""
 
+    name = "u3"
     num_params = 3
     num_wires = 1
     func = staticmethod(tqf.u3)
@@ -22,6 +23,7 @@ class U3(Operation, metaclass=ABCMeta):
 class CU3(Operation, metaclass=ABCMeta):
     """Class for Controlled U3 gate."""
 
+    name = "cu3"
     num_params = 3
     num_wires = 2
     func = staticmethod(tqf.cu3)
@@ -34,6 +36,7 @@ class CU3(Operation, metaclass=ABCMeta):
 class CU(Operation, metaclass=ABCMeta):
     """Class for Controlled U gate (4-parameter two-qubit gate)."""
 
+    name = "cu"
     num_params = 4
     num_wires = 2
     func = staticmethod(tqf.cu)

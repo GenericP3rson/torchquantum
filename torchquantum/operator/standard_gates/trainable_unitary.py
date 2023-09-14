@@ -1,6 +1,6 @@
-from .op_types import *
+from ..op_types import *
 from abc import ABCMeta
-from ..macro import C_DTYPE
+from torchquantum.macro import C_DTYPE
 import torchquantum as tq
 import torch
 from torchquantum.functional import mat_dict
@@ -10,6 +10,7 @@ import torchquantum.functional.functionals as tqf
 class TrainableUnitary(Operation, metaclass=ABCMeta):
     """Class for TrainableUnitary Gate."""
 
+    name = "trainableunitary"
     num_params = AnyNParams
     num_wires = AnyWires
     func = staticmethod(tqf.qubitunitaryfast)
@@ -53,6 +54,7 @@ class TrainableUnitary(Operation, metaclass=ABCMeta):
 class TrainableUnitaryStrict(TrainableUnitary, metaclass=ABCMeta):
     """Class for Strict Unitary matrix gate."""
 
+    name = "trainableunitarystrict"
     num_params = AnyNParams
     num_wires = AnyWires
     func = staticmethod(tqf.qubitunitarystrict)

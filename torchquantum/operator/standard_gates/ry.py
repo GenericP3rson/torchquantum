@@ -1,6 +1,6 @@
-from .op_types import Operation
+from ..op_types import Operation
 from abc import ABCMeta
-from ..macro import C_DTYPE
+from torchquantum.macro import C_DTYPE
 import torchquantum as tq
 import torch
 from torchquantum.functional import mat_dict
@@ -10,6 +10,7 @@ import torchquantum.functional.functionals as tqf
 class RY(Operation, metaclass=ABCMeta):
     """Class for RY Gate."""
 
+    name = "ry"
     num_params = 1
     num_wires = 1
     func = staticmethod(tqf.ry)
@@ -22,6 +23,7 @@ class RY(Operation, metaclass=ABCMeta):
 class RYY(Operation, metaclass=ABCMeta):
     """Class for RYY Gate."""
 
+    name = "ryy"
     num_params = 1
     num_wires = 2
     func = staticmethod(tqf.ryy)
@@ -34,6 +36,7 @@ class RYY(Operation, metaclass=ABCMeta):
 class CRY(Operation, metaclass=ABCMeta):
     """Class for Controlled Rotation Y gate."""
 
+    name = "cry"
     num_params = 1
     num_wires = 2
     func = staticmethod(tqf.cry)

@@ -1,6 +1,6 @@
-from .op_types import Operation
+from ..op_types import Operation
 from abc import ABCMeta
-from ..macro import C_DTYPE
+from torchquantum.macro import C_DTYPE
 import torchquantum as tq
 import torch
 from torchquantum.functional import mat_dict
@@ -10,6 +10,7 @@ import torchquantum.functional.functionals as tqf
 class Toffoli(Operation, metaclass=ABCMeta):
     """Class for Toffoli Gate."""
 
+    name = "toffoli"
     num_params = 0
     num_wires = 3
     matrix = mat_dict["toffoli"]
@@ -23,6 +24,7 @@ class Toffoli(Operation, metaclass=ABCMeta):
 class RC3X(Operation, metaclass=ABCMeta):
     """Class for RC3X Gate."""
 
+    name = "rc3x"
     num_params = 0
     num_wires = 4
     matrix = mat_dict["rc3x"]
@@ -36,6 +38,7 @@ class RC3X(Operation, metaclass=ABCMeta):
 class RCCX(Operation, metaclass=ABCMeta):
     """Class for RCCX Gate."""
 
+    name = "rccx"
     num_params = 0
     num_wires = 3
     matrix = mat_dict["rccx"]

@@ -1,6 +1,6 @@
-from .op_types import *
+from ..op_types import *
 from abc import ABCMeta
-from ..macro import C_DTYPE
+from torchquantum.macro import C_DTYPE
 import torchquantum as tq
 import torch
 from torchquantum.functional import mat_dict
@@ -10,6 +10,7 @@ import torchquantum.functional.functionals as tqf
 class QubitUnitary(Operation, metaclass=ABCMeta):
     """Class for controlled Qubit Unitary gate."""
 
+    name = "qubitunitary"
     num_params = AnyNParams
     num_wires = AnyWires
     func = staticmethod(tqf.qubitunitary)

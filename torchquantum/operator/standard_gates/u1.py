@@ -1,6 +1,6 @@
-from .op_types import Observable, DiagonalOperation
+from ..op_types import Observable, DiagonalOperation
 from abc import ABCMeta
-from ..macro import C_DTYPE
+from torchquantum.macro import C_DTYPE
 import torchquantum as tq
 import torch
 from torchquantum.functional import mat_dict
@@ -12,6 +12,7 @@ class U1(DiagonalOperation, metaclass=ABCMeta):
     as phaseshift.
     """
 
+    name = "u1"
     num_params = 1
     num_wires = 1
     func = staticmethod(tqf.u1)
@@ -23,7 +24,8 @@ class U1(DiagonalOperation, metaclass=ABCMeta):
 
 class CU1(DiagonalOperation, metaclass=ABCMeta):
     """Class for controlled U1 gate."""
-
+    
+    name = "cu1"
     num_params = 1
     num_wires = 2
     func = staticmethod(tqf.cu1)
