@@ -1,0 +1,32 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum.operator
+
+RYY
+===
+
+.. autoclass:: RYY
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: RYY.func
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: RYY.num_params
+    .. autoattribute:: RYY.num_wires
+    .. autoattribute:: RYY.training
+

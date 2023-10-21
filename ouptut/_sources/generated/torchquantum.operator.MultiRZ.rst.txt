@@ -1,0 +1,32 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum.operator
+
+MultiRZ
+=======
+
+.. autoclass:: MultiRZ
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: MultiRZ.func
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: MultiRZ.num_params
+    .. autoattribute:: MultiRZ.num_wires
+    .. autoattribute:: MultiRZ.training
+

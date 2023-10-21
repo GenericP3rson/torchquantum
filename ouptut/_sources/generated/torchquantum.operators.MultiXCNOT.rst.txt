@@ -1,0 +1,33 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum
+
+operators.MultiXCNOT
+====================
+
+.. autoclass:: operators.MultiXCNOT
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: operators.MultiXCNOT.func
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: operators.MultiXCNOT.matrix
+    .. autoattribute:: operators.MultiXCNOT.num_params
+    .. autoattribute:: operators.MultiXCNOT.num_wires
+    .. autoattribute:: operators.MultiXCNOT.training
+

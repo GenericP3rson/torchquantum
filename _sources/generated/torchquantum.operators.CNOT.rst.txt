@@ -1,0 +1,33 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum
+
+operators.CNOT
+==============
+
+.. autoclass:: operators.CNOT
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: operators.CNOT.func
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: operators.CNOT.matrix
+    .. autoattribute:: operators.CNOT.num_params
+    .. autoattribute:: operators.CNOT.num_wires
+    .. autoattribute:: operators.CNOT.training
+

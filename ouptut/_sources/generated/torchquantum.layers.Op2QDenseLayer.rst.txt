@@ -1,0 +1,30 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum
+
+layers.Op2QDenseLayer
+=====================
+
+.. autoclass:: layers.Op2QDenseLayer
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: layers.Op2QDenseLayer.forward
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: layers.Op2QDenseLayer.training
+

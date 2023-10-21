@@ -1,0 +1,32 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum
+
+operators.CRX
+=============
+
+.. autoclass:: operators.CRX
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: operators.CRX.func
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: operators.CRX.num_params
+    .. autoattribute:: operators.CRX.num_wires
+    .. autoattribute:: operators.CRX.training
+

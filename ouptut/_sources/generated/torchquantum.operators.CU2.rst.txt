@@ -1,0 +1,32 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum
+
+operators.CU2
+=============
+
+.. autoclass:: operators.CU2
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: operators.CU2.func
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: operators.CU2.num_params
+    .. autoattribute:: operators.CU2.num_wires
+    .. autoattribute:: operators.CU2.training
+

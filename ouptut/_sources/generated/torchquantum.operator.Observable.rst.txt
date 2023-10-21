@@ -1,0 +1,30 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum.operator
+
+Observable
+==========
+
+.. autoclass:: Observable
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: Observable.diagonalizing_gates
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: Observable.training
+

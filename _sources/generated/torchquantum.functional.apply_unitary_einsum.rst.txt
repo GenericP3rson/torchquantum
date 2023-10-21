@@ -1,0 +1,9 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. automodule:: torchquantum.functional
+.. currentmodule:: torchquantum.functional
+
+apply_unitary_einsum
+====================
+
+.. automethod:: torchquantum.functional.apply_unitary_einsum

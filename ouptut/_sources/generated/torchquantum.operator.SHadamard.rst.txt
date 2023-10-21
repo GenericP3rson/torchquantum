@@ -1,0 +1,33 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum.operator
+
+SHadamard
+=========
+
+.. autoclass:: SHadamard
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: SHadamard.func
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: SHadamard.matrix
+    .. autoattribute:: SHadamard.num_params
+    .. autoattribute:: SHadamard.num_wires
+    .. autoattribute:: SHadamard.training
+

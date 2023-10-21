@@ -1,0 +1,22 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum
+
+AllWires
+========
+
+.. autoclass:: AllWires
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+
+
+
+    .. rubric:: Attributes
+
+
+

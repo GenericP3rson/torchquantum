@@ -1,0 +1,30 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum.layer
+
+TwoQAll
+=======
+
+.. autoclass:: TwoQAll
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: TwoQAll.forward
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: TwoQAll.training
+

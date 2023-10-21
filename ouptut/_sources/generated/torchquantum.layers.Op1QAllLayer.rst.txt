@@ -1,0 +1,30 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum
+
+layers.Op1QAllLayer
+===================
+
+.. autoclass:: layers.Op1QAllLayer
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: layers.Op1QAllLayer.forward
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: layers.Op1QAllLayer.training
+

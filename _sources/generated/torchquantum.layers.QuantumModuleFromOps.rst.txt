@@ -1,0 +1,30 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum
+
+layers.QuantumModuleFromOps
+===========================
+
+.. autoclass:: layers.QuantumModuleFromOps
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: layers.QuantumModuleFromOps.forward
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: layers.QuantumModuleFromOps.training
+

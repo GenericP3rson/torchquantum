@@ -1,0 +1,33 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum.operator
+
+Toffoli
+=======
+
+.. autoclass:: Toffoli
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: Toffoli.func
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: Toffoli.matrix
+    .. autoattribute:: Toffoli.num_params
+    .. autoattribute:: Toffoli.num_wires
+    .. autoattribute:: Toffoli.training
+

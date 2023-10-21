@@ -1,0 +1,30 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum.layer
+
+SWAPSWAPLayer
+=============
+
+.. autoclass:: SWAPSWAPLayer
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: SWAPSWAPLayer.forward
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: SWAPSWAPLayer.training
+

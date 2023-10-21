@@ -1,0 +1,35 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum.operator
+
+I
+=
+
+.. autoclass:: I
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: I.diagonalizing_gates
+    .. automethod:: I.func
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: I.eigvals
+    .. autoattribute:: I.matrix
+    .. autoattribute:: I.num_params
+    .. autoattribute:: I.num_wires
+    .. autoattribute:: I.training
+

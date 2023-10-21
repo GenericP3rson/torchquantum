@@ -1,0 +1,35 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum
+
+operators.PauliY
+================
+
+.. autoclass:: operators.PauliY
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: operators.PauliY.diagonalizing_gates
+    .. automethod:: operators.PauliY.func
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: operators.PauliY.eigvals
+    .. autoattribute:: operators.PauliY.matrix
+    .. autoattribute:: operators.PauliY.num_params
+    .. autoattribute:: operators.PauliY.num_wires
+    .. autoattribute:: operators.PauliY.training
+

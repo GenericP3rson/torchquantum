@@ -1,0 +1,32 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum
+
+layers.QFTLayer
+===============
+
+.. autoclass:: layers.QFTLayer
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: layers.QFTLayer.build_circuit
+    .. automethod:: layers.QFTLayer.build_inverse_circuit
+    .. automethod:: layers.QFTLayer.forward
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: layers.QFTLayer.training
+

@@ -1,0 +1,1090 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+
+    <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
+        <title>TorchQuantum Qubit Rotation Tutorial - TorchQuantum 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=362ab14a" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">TorchQuantum 0.1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  
+  <span class="sidebar-brand-text">TorchQuantum 0.1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api_torchquantum.html">torchquantum</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../api_functional.html">torchquantum.functional</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of torchquantum.functional</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.apply_unitary_einsum.html">apply_unitary_einsum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.apply_unitary_bmm.html">apply_unitary_bmm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.gate_wrapper.html">gate_wrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.reset.html">reset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.hadamard.html">hadamard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.shadamard.html">shadamard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.paulix.html">paulix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.pauliy.html">pauliy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.pauliz.html">pauliz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.i.html">i</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.s.html">s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.t.html">t</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.sx.html">sx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.cnot.html">cnot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.cz.html">cz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.cy.html">cy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.rx.html">rx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.ry.html">ry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.rz.html">rz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.rxx.html">rxx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.ryy.html">ryy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.rzz.html">rzz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.zz.html">zz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.rzx.html">rzx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.zx.html">zx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.swap.html">swap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.sswap.html">sswap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.cswap.html">cswap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.toffoli.html">toffoli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.phaseshift.html">phaseshift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.p.html">p</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.cp.html">cp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.rot.html">rot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.multirz.html">multirz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.crx.html">crx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.cry.html">cry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.crz.html">crz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.crot.html">crot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.u1.html">u1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.u2.html">u2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.u3.html">u3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.u.html">u</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.cu1.html">cu1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.cu2.html">cu2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.cu3.html">cu3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.cu.html">cu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.qubitunitary.html">qubitunitary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.qubitunitaryfast.html">qubitunitaryfast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.qubitunitarystrict.html">qubitunitarystrict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.multicnot.html">multicnot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.multixcnot.html">multixcnot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.x.html">x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.y.html">y</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.z.html">z</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.zz.html">zz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.cx.html">cx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.ccnot.html">ccnot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.ccx.html">ccx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.reset.html">reset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.singleexcitation.html">singleexcitation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.ecr.html">ecr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.functional.echoedcrossresonance.html">echoedcrossresonance</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../api_operators.html">torchquantum.operators</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of torchquantum.operators</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.Operator.html">Operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.Observable.html">Observable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.Operation.html">Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.DiagonalOperation.html">DiagonalOperation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.Hadamard.html">Hadamard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.SHadamard.html">SHadamard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.PauliX.html">PauliX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.PauliY.html">PauliY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.PauliZ.html">PauliZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.I.html">I</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.S.html">S</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.T.html">T</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.SX.html">SX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.CNOT.html">CNOT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.CZ.html">CZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.CY.html">CY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.RX.html">RX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.RY.html">RY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.RZ.html">RZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.RXX.html">RXX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.RYY.html">RYY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.RZZ.html">RZZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.RZX.html">RZX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.SWAP.html">SWAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.SSWAP.html">SSWAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.CSWAP.html">CSWAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.Toffoli.html">Toffoli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.PhaseShift.html">PhaseShift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.Rot.html">Rot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.MultiRZ.html">MultiRZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.CRX.html">CRX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.CRY.html">CRY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.CRZ.html">CRZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.CRot.html">CRot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.U1.html">U1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.U2.html">U2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.U3.html">U3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.CU1.html">CU1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.CU2.html">CU2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.CU3.html">CU3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.QubitUnitary.html">QubitUnitary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.QubitUnitaryFast.html">QubitUnitaryFast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.TrainableUnitary.html">TrainableUnitary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.TrainableUnitaryStrict.html">TrainableUnitaryStrict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.MultiCNOT.html">MultiCNOT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.MultiXCNOT.html">MultiXCNOT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.Reset.html">Reset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.SingleExcitation.html">SingleExcitation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.EchoedCrossResonance.html">EchoedCrossResonance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.operator.ECR.html">ECR</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../api_layers.html">torchquantum.layers</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of torchquantum.layers</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.layer.QuantumModuleFromOps.html">QuantumModuleFromOps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.layer.TrainableOpAll.html">TrainableOpAll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.layer.ClassicalInOpAll.html">ClassicalInOpAll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.layer.FixedOpAll.html">FixedOpAll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.layer.TwoQAll.html">TwoQAll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.layer.RandomLayer.html">RandomLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.layer.RandomLayerAllTypes.html">RandomLayerAllTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.layer.Op1QAllLayer.html">Op1QAllLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.layer.RandomOp1All.html">RandomOp1All</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.layer.Op2QAllLayer.html">Op2QAllLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.layer.Op2QButterflyLayer.html">Op2QButterflyLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.layer.Op2QDenseLayer.html">Op2QDenseLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.layer.CXLayer.html">CXLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.layer.CXCXCXLayer.html">CXCXCXLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.layer.SWAPSWAPLayer.html">SWAPSWAPLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.layer.RXYZCXLayer0.html">RXYZCXLayer0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../generated/torchquantum.layer.QFTLayer.html">QFTLayer</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usage_installation.html">Installation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../index.html">TorchQuantum Examples</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of TorchQuantum Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../gradient_pruning/probabilistic_gradient_pruning.html">Probabilistic gradient pruning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../param_shift_onchip_training/param_shift_onchip_training.html">Apply parameters shift rules to train quantum model using TorchQuantum.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quantum_kernel_method/quantum_kernel_method.html">Quantum Kernel Methods for IRIS dataset classification with TorchQuantum.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quanvolution/quanvolution.html">Quanvolution (Quantum convolution) for MNIST image classification with TorchQuantum.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../superdense_coding/superdense_coding_torchquantum.html">Superdense Coding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../superdense_coding/superdense_coding_torchquantum.html#References:">References:</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="TorchQuantum-Qubit-Rotation-Tutorial">
+<h1>TorchQuantum Qubit Rotation Tutorial<a class="headerlink" href="#TorchQuantum-Qubit-Rotation-Tutorial" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p>Note: This tutorial was adapted from Pennylane’s <a class="reference external" href="https://pennylane.ai/qml/demos/tutorial_qubit_rotation">Basic tutorial: qubit rotation</a> by Josh Izaac.</p>
+</div></blockquote>
+<p>To see how TorchQuantum allows the easy construction and optimization of quantum functions, let’s consider the simple case of qubit rotation.</p>
+<p>The task at hand is to optimize two rotation gates in order to flip a single qubit from state |0⟩ to state |1⟩.</p>
+<section id="The-quantum-circuit">
+<h2>The quantum circuit<a class="headerlink" href="#The-quantum-circuit" title="Link to this heading">#</a></h2>
+<p>In the qubit rotation example, we wish to implement the following quantum circuit:</p>
+<p><img alt="image.png" src="data:image/png;base64,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" /></p>
+<p>Breaking this down step-by-step, we first start with a qubit in the ground state <span class="math notranslate nohighlight">\(|0⟩ = [1\ 0]^T\)</span>, and rotate it around the x-axis by applying the gate</p>
+<p><span class="math notranslate nohighlight">\(\begin{split}R_x(\phi_1) = e^{-i \phi_1 \sigma_x /2} = \begin{bmatrix} \cos \frac{\phi_1}{2} &amp; -i \sin \frac{\phi_1}{2} \\ -i \sin \frac{\phi_1}{2} &amp; \cos \frac{\phi_1}{2} \end{bmatrix}, \end{split}\)</span></p>
+<p>and then around the y-axis via the gate</p>
+<p><span class="math notranslate nohighlight">\(\begin{split}R_y(\phi_2) = e^{-i \phi_2 \sigma_y/2} = \begin{bmatrix} \cos \frac{\phi_2}{2} &amp; - \sin \frac{\phi_2}{2} \\ \sin \frac{\phi_2}{2} &amp; \cos \frac{\phi_2}{2} \end{bmatrix}.\end{split}\)</span></p>
+<p>After these operations the qubit is now in the state</p>
+<p><span class="math notranslate nohighlight">\(| \psi \rangle = R_y(\phi_2) R_x(\phi_1) | 0 \rangle.\)</span></p>
+<p>Finally, we measure the expectation value <span class="math notranslate nohighlight">\(⟨ψ∣σ_z∣ψ⟩\)</span> of the Pauli-Z operator</p>
+<p>Using the above to calculate the exact expectation value, we find that</p>
+<p><span class="math notranslate nohighlight">\(\begin{split}\sigma_z = \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{bmatrix}.\end{split}\)</span></p>
+<p>Depending on the circuit parameters <span class="math notranslate nohighlight">\(ϕ_1\)</span> and <span class="math notranslate nohighlight">\(ϕ_2\)</span>, the output expectation lies between 1 (if $|ψ⟩ = |0⟩) and -1 (if |ψ⟩ = |1⟩).</p>
+<p><span class="math notranslate nohighlight">\(\langle \psi \mid \sigma_z \mid \psi \rangle  = \langle 0 \mid R_x(\phi_1)^\dagger R_y(\phi_2)^\dagger \sigma_z R_y(\phi_2) R_x(\phi_1) \mid 0 \rangle  = \cos(\phi_1)\cos(\phi_2).\)</span></p>
+<p>Let’s see how we can easily implement and optimize this circuit using TorchQuantum.</p>
+</section>
+<section id="Importing-TorchQuantum">
+<h2>Importing TorchQuantum<a class="headerlink" href="#Importing-TorchQuantum" title="Link to this heading">#</a></h2>
+<p>The first thing we need to do is install and import TorchQuantum. To utilize all of TorchQuantum’s features, install it from source.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="err">!</span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">mit</span><span class="o">-</span><span class="n">han</span><span class="o">-</span><span class="n">lab</span><span class="o">/</span><span class="n">torchquantum</span><span class="o">.</span><span class="n">git</span>
+<span class="err">!</span><span class="n">cd</span> <span class="n">torchquantum</span> <span class="o">&amp;&amp;</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">editable</span> <span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Cloning into &#39;torchquantum&#39;...
+remote: Enumerating objects: 13551, done.
+remote: Counting objects: 100% (1822/1822), done.
+remote: Compressing objects: 100% (758/758), done.
+remote: Total 13551 (delta 1085), reused 1640 (delta 980), pack-reused 11729
+Receiving objects: 100% (13551/13551), 104.07 MiB | 21.17 MiB/s, done.
+Resolving deltas: 100% (7442/7442), done.
+Obtaining file:///content/torchquantum
+  Preparing metadata (setup.py) ... done
+Requirement already satisfied: numpy&gt;=1.19.2 in /usr/local/lib/python3.10/dist-packages (from torchquantum==0.1.7) (1.22.4)
+Requirement already satisfied: torchvision&gt;=0.9.0.dev20210130 in /usr/local/lib/python3.10/dist-packages (from torchquantum==0.1.7) (0.15.2+cu118)
+Requirement already satisfied: tqdm&gt;=4.56.0 in /usr/local/lib/python3.10/dist-packages (from torchquantum==0.1.7) (4.65.0)
+Requirement already satisfied: setuptools&gt;=52.0.0 in /usr/local/lib/python3.10/dist-packages (from torchquantum==0.1.7) (67.7.2)
+Requirement already satisfied: torch&gt;=1.8.0 in /usr/local/lib/python3.10/dist-packages (from torchquantum==0.1.7) (2.0.1+cu118)
+Collecting torchdiffeq&gt;=0.2.3 (from torchquantum==0.1.7)
+  Downloading torchdiffeq-0.2.3-py3-none-any.whl (31 kB)
+Collecting torchpack&gt;=0.3.0 (from torchquantum==0.1.7)
+  Downloading torchpack-0.3.1-py3-none-any.whl (34 kB)
+Collecting qiskit==0.38.0 (from torchquantum==0.1.7)
+  Downloading qiskit-0.38.0.tar.gz (13 kB)
+  Preparing metadata (setup.py) ... done
+Requirement already satisfied: matplotlib&gt;=3.3.2 in /usr/local/lib/python3.10/dist-packages (from torchquantum==0.1.7) (3.7.1)
+Collecting pathos&gt;=0.2.7 (from torchquantum==0.1.7)
+  Downloading pathos-0.3.0-py3-none-any.whl (79 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">79.8/79.8 kB</span> <span class="ansi-red-fg">4.7 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Collecting pylatexenc&gt;=2.10 (from torchquantum==0.1.7)
+  Downloading pylatexenc-2.10.tar.gz (162 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">162.6/162.6 kB</span> <span class="ansi-red-fg">9.0 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+  Preparing metadata (setup.py) ... done
+Collecting dill==0.3.4 (from torchquantum==0.1.7)
+  Downloading dill-0.3.4-py2.py3-none-any.whl (86 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">86.9/86.9 kB</span> <span class="ansi-red-fg">8.1 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Collecting qiskit-terra==0.21.2 (from qiskit==0.38.0-&gt;torchquantum==0.1.7)
+  Downloading qiskit_terra-0.21.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (6.7 MB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">6.7/6.7 MB</span> <span class="ansi-red-fg">13.8 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Collecting qiskit-aer==0.11.0 (from qiskit==0.38.0-&gt;torchquantum==0.1.7)
+  Downloading qiskit_aer-0.11.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (19.2 MB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">19.2/19.2 MB</span> <span class="ansi-red-fg">64.4 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Collecting qiskit-ibmq-provider==0.19.2 (from qiskit==0.38.0-&gt;torchquantum==0.1.7)
+  Downloading qiskit_ibmq_provider-0.19.2-py3-none-any.whl (240 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">240.4/240.4 kB</span> <span class="ansi-red-fg">23.6 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Requirement already satisfied: scipy&gt;=1.0 in /usr/local/lib/python3.10/dist-packages (from qiskit-aer==0.11.0-&gt;qiskit==0.38.0-&gt;torchquantum==0.1.7) (1.10.1)
+Requirement already satisfied: requests&gt;=2.19 in /usr/local/lib/python3.10/dist-packages (from qiskit-ibmq-provider==0.19.2-&gt;qiskit==0.38.0-&gt;torchquantum==0.1.7) (2.27.1)
+Collecting requests-ntlm&gt;=1.1.0 (from qiskit-ibmq-provider==0.19.2-&gt;qiskit==0.38.0-&gt;torchquantum==0.1.7)
+  Downloading requests_ntlm-1.2.0-py3-none-any.whl (6.0 kB)
+Requirement already satisfied: urllib3&gt;=1.21.1 in /usr/local/lib/python3.10/dist-packages (from qiskit-ibmq-provider==0.19.2-&gt;qiskit==0.38.0-&gt;torchquantum==0.1.7) (1.26.16)
+Requirement already satisfied: python-dateutil&gt;=2.8.0 in /usr/local/lib/python3.10/dist-packages (from qiskit-ibmq-provider==0.19.2-&gt;qiskit==0.38.0-&gt;torchquantum==0.1.7) (2.8.2)
+Requirement already satisfied: websocket-client&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from qiskit-ibmq-provider==0.19.2-&gt;qiskit==0.38.0-&gt;torchquantum==0.1.7) (1.6.1)
+Collecting websockets&gt;=10.0 (from qiskit-ibmq-provider==0.19.2-&gt;qiskit==0.38.0-&gt;torchquantum==0.1.7)
+  Downloading websockets-11.0.3-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (129 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">129.9/129.9 kB</span> <span class="ansi-red-fg">13.7 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Collecting retworkx&gt;=0.11.0 (from qiskit-terra==0.21.2-&gt;qiskit==0.38.0-&gt;torchquantum==0.1.7)
+  Downloading retworkx-0.13.0-py3-none-any.whl (10 kB)
+Collecting ply&gt;=3.10 (from qiskit-terra==0.21.2-&gt;qiskit==0.38.0-&gt;torchquantum==0.1.7)
+  Downloading ply-3.11-py2.py3-none-any.whl (49 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">49.6/49.6 kB</span> <span class="ansi-red-fg">5.5 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Requirement already satisfied: psutil&gt;=5 in /usr/local/lib/python3.10/dist-packages (from qiskit-terra==0.21.2-&gt;qiskit==0.38.0-&gt;torchquantum==0.1.7) (5.9.5)
+Requirement already satisfied: sympy&gt;=1.3 in /usr/local/lib/python3.10/dist-packages (from qiskit-terra==0.21.2-&gt;qiskit==0.38.0-&gt;torchquantum==0.1.7) (1.11.1)
+Collecting stevedore&gt;=3.0.0 (from qiskit-terra==0.21.2-&gt;qiskit==0.38.0-&gt;torchquantum==0.1.7)
+  Downloading stevedore-5.1.0-py3-none-any.whl (49 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">49.6/49.6 kB</span> <span class="ansi-red-fg">5.1 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Collecting tweedledum&lt;2.0,&gt;=1.1 (from qiskit-terra==0.21.2-&gt;qiskit==0.38.0-&gt;torchquantum==0.1.7)
+  Downloading tweedledum-1.1.1-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (929 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">929.7/929.7 kB</span> <span class="ansi-red-fg">55.5 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Collecting symengine&gt;=0.9 (from qiskit-terra==0.21.2-&gt;qiskit==0.38.0-&gt;torchquantum==0.1.7)
+  Downloading symengine-0.10.0-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (37.4 MB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">37.4/37.4 MB</span> <span class="ansi-red-fg">14.3 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Requirement already satisfied: contourpy&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib&gt;=3.3.2-&gt;torchquantum==0.1.7) (1.1.0)
+Requirement already satisfied: cycler&gt;=0.10 in /usr/local/lib/python3.10/dist-packages (from matplotlib&gt;=3.3.2-&gt;torchquantum==0.1.7) (0.11.0)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib&gt;=3.3.2-&gt;torchquantum==0.1.7) (4.40.0)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib&gt;=3.3.2-&gt;torchquantum==0.1.7) (1.4.4)
+Requirement already satisfied: packaging&gt;=20.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib&gt;=3.3.2-&gt;torchquantum==0.1.7) (23.1)
+Requirement already satisfied: pillow&gt;=6.2.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib&gt;=3.3.2-&gt;torchquantum==0.1.7) (8.4.0)
+Requirement already satisfied: pyparsing&gt;=2.3.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib&gt;=3.3.2-&gt;torchquantum==0.1.7) (3.1.0)
+Collecting ppft&gt;=1.7.6.6 (from pathos&gt;=0.2.7-&gt;torchquantum==0.1.7)
+  Downloading ppft-1.7.6.6-py3-none-any.whl (52 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">52.8/52.8 kB</span> <span class="ansi-red-fg">5.7 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+INFO: pip is looking at multiple versions of pathos to determine which version is compatible with other requirements. This could take a while.
+Collecting pathos&gt;=0.2.7 (from torchquantum==0.1.7)
+  Downloading pathos-0.2.9-py3-none-any.whl (76 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">76.9/76.9 kB</span> <span class="ansi-red-fg">8.4 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+  Downloading pathos-0.2.8-py2.py3-none-any.whl (81 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">81.7/81.7 kB</span> <span class="ansi-red-fg">8.7 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Collecting multiprocess&gt;=0.70.12 (from pathos&gt;=0.2.7-&gt;torchquantum==0.1.7)
+  Downloading multiprocess-0.70.14-py310-none-any.whl (134 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">134.3/134.3 kB</span> <span class="ansi-red-fg">14.5 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Collecting pox&gt;=0.3.0 (from pathos&gt;=0.2.7-&gt;torchquantum==0.1.7)
+  Downloading pox-0.3.2-py3-none-any.whl (29 kB)
+Requirement already satisfied: filelock in /usr/local/lib/python3.10/dist-packages (from torch&gt;=1.8.0-&gt;torchquantum==0.1.7) (3.12.2)
+Requirement already satisfied: typing-extensions in /usr/local/lib/python3.10/dist-packages (from torch&gt;=1.8.0-&gt;torchquantum==0.1.7) (4.7.1)
+Requirement already satisfied: networkx in /usr/local/lib/python3.10/dist-packages (from torch&gt;=1.8.0-&gt;torchquantum==0.1.7) (3.1)
+Requirement already satisfied: jinja2 in /usr/local/lib/python3.10/dist-packages (from torch&gt;=1.8.0-&gt;torchquantum==0.1.7) (3.1.2)
+Requirement already satisfied: triton==2.0.0 in /usr/local/lib/python3.10/dist-packages (from torch&gt;=1.8.0-&gt;torchquantum==0.1.7) (2.0.0)
+Requirement already satisfied: cmake in /usr/local/lib/python3.10/dist-packages (from triton==2.0.0-&gt;torch&gt;=1.8.0-&gt;torchquantum==0.1.7) (3.25.2)
+Requirement already satisfied: lit in /usr/local/lib/python3.10/dist-packages (from triton==2.0.0-&gt;torch&gt;=1.8.0-&gt;torchquantum==0.1.7) (16.0.6)
+Requirement already satisfied: h5py in /usr/local/lib/python3.10/dist-packages (from torchpack&gt;=0.3.0-&gt;torchquantum==0.1.7) (3.8.0)
+Collecting loguru (from torchpack&gt;=0.3.0-&gt;torchquantum==0.1.7)
+  Downloading loguru-0.7.0-py3-none-any.whl (59 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">60.0/60.0 kB</span> <span class="ansi-red-fg">7.4 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Collecting multimethod (from torchpack&gt;=0.3.0-&gt;torchquantum==0.1.7)
+  Downloading multimethod-1.9.1-py3-none-any.whl (10 kB)
+Requirement already satisfied: pyyaml in /usr/local/lib/python3.10/dist-packages (from torchpack&gt;=0.3.0-&gt;torchquantum==0.1.7) (6.0)
+Requirement already satisfied: tensorboard in /usr/local/lib/python3.10/dist-packages (from torchpack&gt;=0.3.0-&gt;torchquantum==0.1.7) (2.12.3)
+Collecting tensorpack (from torchpack&gt;=0.3.0-&gt;torchquantum==0.1.7)
+  Downloading tensorpack-0.11-py2.py3-none-any.whl (296 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">296.3/296.3 kB</span> <span class="ansi-red-fg">27.0 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Requirement already satisfied: toml in /usr/local/lib/python3.10/dist-packages (from torchpack&gt;=0.3.0-&gt;torchquantum==0.1.7) (0.10.2)
+INFO: pip is looking at multiple versions of multiprocess to determine which version is compatible with other requirements. This could take a while.
+Collecting multiprocess&gt;=0.70.12 (from pathos&gt;=0.2.7-&gt;torchquantum==0.1.7)
+  Downloading multiprocess-0.70.13-py310-none-any.whl (133 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">133.1/133.1 kB</span> <span class="ansi-red-fg">10.7 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+  Downloading multiprocess-0.70.12.2-py39-none-any.whl (128 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">128.7/128.7 kB</span> <span class="ansi-red-fg">15.6 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.10/dist-packages (from python-dateutil&gt;=2.8.0-&gt;qiskit-ibmq-provider==0.19.2-&gt;qiskit==0.38.0-&gt;torchquantum==0.1.7) (1.16.0)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests&gt;=2.19-&gt;qiskit-ibmq-provider==0.19.2-&gt;qiskit==0.38.0-&gt;torchquantum==0.1.7) (2023.5.7)
+Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/python3.10/dist-packages (from requests&gt;=2.19-&gt;qiskit-ibmq-provider==0.19.2-&gt;qiskit==0.38.0-&gt;torchquantum==0.1.7) (2.0.12)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.10/dist-packages (from requests&gt;=2.19-&gt;qiskit-ibmq-provider==0.19.2-&gt;qiskit==0.38.0-&gt;torchquantum==0.1.7) (3.4)
+Requirement already satisfied: mpmath&gt;=0.19 in /usr/local/lib/python3.10/dist-packages (from sympy&gt;=1.3-&gt;qiskit-terra==0.21.2-&gt;qiskit==0.38.0-&gt;torchquantum==0.1.7) (1.3.0)
+Requirement already satisfied: MarkupSafe&gt;=2.0 in /usr/local/lib/python3.10/dist-packages (from jinja2-&gt;torch&gt;=1.8.0-&gt;torchquantum==0.1.7) (2.1.3)
+Requirement already satisfied: absl-py&gt;=0.4 in /usr/local/lib/python3.10/dist-packages (from tensorboard-&gt;torchpack&gt;=0.3.0-&gt;torchquantum==0.1.7) (1.4.0)
+Requirement already satisfied: grpcio&gt;=1.48.2 in /usr/local/lib/python3.10/dist-packages (from tensorboard-&gt;torchpack&gt;=0.3.0-&gt;torchquantum==0.1.7) (1.56.0)
+Requirement already satisfied: google-auth&lt;3,&gt;=1.6.3 in /usr/local/lib/python3.10/dist-packages (from tensorboard-&gt;torchpack&gt;=0.3.0-&gt;torchquantum==0.1.7) (2.17.3)
+Requirement already satisfied: google-auth-oauthlib&lt;1.1,&gt;=0.5 in /usr/local/lib/python3.10/dist-packages (from tensorboard-&gt;torchpack&gt;=0.3.0-&gt;torchquantum==0.1.7) (1.0.0)
+Requirement already satisfied: markdown&gt;=2.6.8 in /usr/local/lib/python3.10/dist-packages (from tensorboard-&gt;torchpack&gt;=0.3.0-&gt;torchquantum==0.1.7) (3.4.3)
+Requirement already satisfied: protobuf&gt;=3.19.6 in /usr/local/lib/python3.10/dist-packages (from tensorboard-&gt;torchpack&gt;=0.3.0-&gt;torchquantum==0.1.7) (3.20.3)
+Requirement already satisfied: tensorboard-data-server&lt;0.8.0,&gt;=0.7.0 in /usr/local/lib/python3.10/dist-packages (from tensorboard-&gt;torchpack&gt;=0.3.0-&gt;torchquantum==0.1.7) (0.7.1)
+Requirement already satisfied: werkzeug&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from tensorboard-&gt;torchpack&gt;=0.3.0-&gt;torchquantum==0.1.7) (2.3.6)
+Requirement already satisfied: wheel&gt;=0.26 in /usr/local/lib/python3.10/dist-packages (from tensorboard-&gt;torchpack&gt;=0.3.0-&gt;torchquantum==0.1.7) (0.40.0)
+Requirement already satisfied: termcolor&gt;=1.1 in /usr/local/lib/python3.10/dist-packages (from tensorpack-&gt;torchpack&gt;=0.3.0-&gt;torchquantum==0.1.7) (2.3.0)
+Requirement already satisfied: tabulate&gt;=0.7.7 in /usr/local/lib/python3.10/dist-packages (from tensorpack-&gt;torchpack&gt;=0.3.0-&gt;torchquantum==0.1.7) (0.8.10)
+Requirement already satisfied: msgpack&gt;=0.5.2 in /usr/local/lib/python3.10/dist-packages (from tensorpack-&gt;torchpack&gt;=0.3.0-&gt;torchquantum==0.1.7) (1.0.5)
+Collecting msgpack-numpy&gt;=0.4.4.2 (from tensorpack-&gt;torchpack&gt;=0.3.0-&gt;torchquantum==0.1.7)
+  Downloading msgpack_numpy-0.4.8-py2.py3-none-any.whl (6.9 kB)
+Requirement already satisfied: pyzmq&gt;=16 in /usr/local/lib/python3.10/dist-packages (from tensorpack-&gt;torchpack&gt;=0.3.0-&gt;torchquantum==0.1.7) (23.2.1)
+Requirement already satisfied: cachetools&lt;6.0,&gt;=2.0.0 in /usr/local/lib/python3.10/dist-packages (from google-auth&lt;3,&gt;=1.6.3-&gt;tensorboard-&gt;torchpack&gt;=0.3.0-&gt;torchquantum==0.1.7) (5.3.1)
+Requirement already satisfied: pyasn1-modules&gt;=0.2.1 in /usr/local/lib/python3.10/dist-packages (from google-auth&lt;3,&gt;=1.6.3-&gt;tensorboard-&gt;torchpack&gt;=0.3.0-&gt;torchquantum==0.1.7) (0.3.0)
+Requirement already satisfied: rsa&lt;5,&gt;=3.1.4 in /usr/local/lib/python3.10/dist-packages (from google-auth&lt;3,&gt;=1.6.3-&gt;tensorboard-&gt;torchpack&gt;=0.3.0-&gt;torchquantum==0.1.7) (4.9)
+Requirement already satisfied: requests-oauthlib&gt;=0.7.0 in /usr/local/lib/python3.10/dist-packages (from google-auth-oauthlib&lt;1.1,&gt;=0.5-&gt;tensorboard-&gt;torchpack&gt;=0.3.0-&gt;torchquantum==0.1.7) (1.3.1)
+Collecting cryptography&gt;=1.3 (from requests-ntlm&gt;=1.1.0-&gt;qiskit-ibmq-provider==0.19.2-&gt;qiskit==0.38.0-&gt;torchquantum==0.1.7)
+  Downloading cryptography-41.0.2-cp37-abi3-manylinux_2_28_x86_64.whl (4.3 MB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">4.3/4.3 MB</span> <span class="ansi-red-fg">79.8 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Collecting pyspnego&gt;=0.1.6 (from requests-ntlm&gt;=1.1.0-&gt;qiskit-ibmq-provider==0.19.2-&gt;qiskit==0.38.0-&gt;torchquantum==0.1.7)
+  Downloading pyspnego-0.9.1-py3-none-any.whl (132 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">132.9/132.9 kB</span> <span class="ansi-red-fg">12.8 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Collecting rustworkx==0.13.0 (from retworkx&gt;=0.11.0-&gt;qiskit-terra==0.21.2-&gt;qiskit==0.38.0-&gt;torchquantum==0.1.7)
+  Downloading rustworkx-0.13.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.9 MB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">1.9/1.9 MB</span> <span class="ansi-red-fg">62.6 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Collecting pbr!=2.1.0,&gt;=2.0.0 (from stevedore&gt;=3.0.0-&gt;qiskit-terra==0.21.2-&gt;qiskit==0.38.0-&gt;torchquantum==0.1.7)
+  Downloading pbr-5.11.1-py2.py3-none-any.whl (112 kB)
+     <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">112.7/112.7 kB</span> <span class="ansi-red-fg">8.0 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Requirement already satisfied: cffi&gt;=1.12 in /usr/local/lib/python3.10/dist-packages (from cryptography&gt;=1.3-&gt;requests-ntlm&gt;=1.1.0-&gt;qiskit-ibmq-provider==0.19.2-&gt;qiskit==0.38.0-&gt;torchquantum==0.1.7) (1.15.1)
+Requirement already satisfied: pyasn1&lt;0.6.0,&gt;=0.4.6 in /usr/local/lib/python3.10/dist-packages (from pyasn1-modules&gt;=0.2.1-&gt;google-auth&lt;3,&gt;=1.6.3-&gt;tensorboard-&gt;torchpack&gt;=0.3.0-&gt;torchquantum==0.1.7) (0.5.0)
+Requirement already satisfied: oauthlib&gt;=3.0.0 in /usr/local/lib/python3.10/dist-packages (from requests-oauthlib&gt;=0.7.0-&gt;google-auth-oauthlib&lt;1.1,&gt;=0.5-&gt;tensorboard-&gt;torchpack&gt;=0.3.0-&gt;torchquantum==0.1.7) (3.2.2)
+Requirement already satisfied: pycparser in /usr/local/lib/python3.10/dist-packages (from cffi&gt;=1.12-&gt;cryptography&gt;=1.3-&gt;requests-ntlm&gt;=1.1.0-&gt;qiskit-ibmq-provider==0.19.2-&gt;qiskit==0.38.0-&gt;torchquantum==0.1.7) (2.21)
+Building wheels for collected packages: qiskit, pylatexenc
+  Building wheel for qiskit (setup.py) ... done
+  Created wheel for qiskit: filename=qiskit-0.38.0-py3-none-any.whl size=12128 sha256=7a54933fa9c2e1b1caffdc6129aa17723a1f8a19655b68eb148d3b916a542664
+  Stored in directory: /root/.cache/pip/wheels/9c/b0/59/d6281e20610c76a5f88c9b931c6b338410f70b4ba6561453bc
+  Building wheel for pylatexenc (setup.py) ... done
+  Created wheel for pylatexenc: filename=pylatexenc-2.10-py3-none-any.whl size=136820 sha256=087f5465344ad90f93c062a3e9d3224bf3afdb393350b74383207ecbe6a0509b
+  Stored in directory: /root/.cache/pip/wheels/d3/31/8b/e09b0386afd80cfc556c00408c9aeea5c35c4d484a9c762fd5
+Successfully built qiskit pylatexenc
+Installing collected packages: pylatexenc, ply, websockets, tweedledum, symengine, rustworkx, ppft, pox, pbr, multimethod, msgpack-numpy, loguru, dill, tensorpack, stevedore, retworkx, multiprocess, cryptography, qiskit-terra, pyspnego, pathos, requests-ntlm, qiskit-aer, qiskit-ibmq-provider, qiskit, torchpack, torchdiffeq, torchquantum
+  Running setup.py develop for torchquantum
+Successfully installed cryptography-41.0.2 dill-0.3.4 loguru-0.7.0 msgpack-numpy-0.4.8 multimethod-1.9.1 multiprocess-0.70.12.2 pathos-0.2.8 pbr-5.11.1 ply-3.11 pox-0.3.2 ppft-1.7.6.6 pylatexenc-2.10 pyspnego-0.9.1 qiskit-0.38.0 qiskit-aer-0.11.0 qiskit-ibmq-provider-0.19.2 qiskit-terra-0.21.2 requests-ntlm-1.2.0 retworkx-0.13.0 rustworkx-0.13.0 stevedore-5.1.0 symengine-0.10.0 tensorpack-0.11 torchdiffeq-0.2.3 torchpack-0.3.1 torchquantum-0.1.7 tweedledum-1.1.1 websockets-11.0.3
+</pre></div></div>
+</div>
+<blockquote>
+<div><p><strong>Note: To be able to install TorchQuantum on Colab, you must restart your runtime before continuing!</strong></p>
+</div></blockquote>
+<p>After installing from source (and restarting if using Colab!), you can import TorchQuantum.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torchquantum</span> <span class="k">as</span> <span class="nn">tq</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Creating-a-device">
+<h2>Creating a device<a class="headerlink" href="#Creating-a-device" title="Link to this heading">#</a></h2>
+<p>Before we can construct our quantum node, we need to initialize a device.</p>
+<blockquote>
+<div><p><strong>Definition</strong></p>
+<p>Any computational object that can apply quantum operations and return a measurement value is called a quantum <strong>device</strong>.</p>
+</div></blockquote>
+<blockquote>
+<div><p><em>Devices are loaded in PennyLane via the class</em> <a class="reference external" href="https://github.com/mit-han-lab/torchquantum/blob/main/torchquantum/devices.py#L13">QuantumDevice()</a></p>
+</div></blockquote>
+<p>For this tutorial, we are using the qubit model, so let’s initialize the ‘default’ device provided by TorchQuantum.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">qdev</span> <span class="o">=</span> <span class="n">tq</span><span class="o">.</span><span class="n">QuantumDevice</span><span class="p">(</span>
+    <span class="n">n_wires</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">device_name</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">,</span> <span class="n">bsz</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">,</span> <span class="n">record_op</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>For all devices, <a class="reference external" href="https://github.com/mit-han-lab/torchquantum/blob/main/torchquantum/devices.py#L13">QuantumDevice()</a> accepts the following arguments:</p>
+<ul class="simple">
+<li><p>n_wires: number of qubits to initialize the device with</p></li>
+<li><p>device_name: name of the quantum device to be loaded</p></li>
+<li><p>bsz: batch size of the quantum state</p></li>
+<li><p>device: which classical computing device to use, ‘cpu’ or ‘cuda’ (similar to the device option in PyTorch)</p></li>
+<li><p>record_op: whether to record the operations on the quantum device and then they can be used to construct a static computation graph</p></li>
+</ul>
+<p>Here, as we only require a single qubit for this example, we set wires=1.</p>
+</section>
+<section id="Constructing-the-Circuit">
+<h2>Constructing the Circuit<a class="headerlink" href="#Constructing-the-Circuit" title="Link to this heading">#</a></h2>
+<p>Now that we have initialized our device, we can begin to construct the circuit. In TorchQuantum, there are multiple ways to construct a circuit, and we can explore a few of them.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># specify parameters</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.54</span><span class="p">,</span> <span class="mf">0.12</span><span class="p">]</span>
+
+<span class="c1"># create circuit</span>
+<span class="n">qdev</span><span class="o">.</span><span class="n">rx</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">wires</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qdev</span><span class="o">.</span><span class="n">ry</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">wires</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>This method calls the gates directly from the QuantumDevice. For the rotations, we can specify which wire it belongs to (zero-indexed) and a parameter theta for the amount of rotation. However, the rotation gates also have other parameters.</p>
+<ul class="simple">
+<li><p>wires: which qibits the gate is applied to</p></li>
+<li><p>theta: the amount of rotation</p></li>
+<li><p>n_wires: number of qubits the gate is applied to</p></li>
+<li><p>static: whether use static mode computation</p></li>
+<li><p>parent_graph: Parent QuantumGraph of current operation</p></li>
+<li><p>inverse: whether inverse the gate</p></li>
+<li><p>comp_method: option to use ‘bmm’ or ‘einsum’ method to perform matrix vector multiplication</p></li>
+</ul>
+<p>To get the following expected value, we can use two different functions from torchquantum’s measurement module.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torchquantum.measurement</span> <span class="kn">import</span> <span class="n">expval_joint_analytical</span><span class="p">,</span> <span class="n">expval_joint_sampling</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">expval_joint_analytical</span></code> will compute the expectation value of a joint observable in analytical way, assuming the statevector is available. This can only be run on a classical simulator, not real quantum hardware.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expval_joint_analytical</span></code> will compute the expectation value of a joint observable from sampling the measurement bistring. This can be run on both a classical simulation and real quantum hardware. Since this is sampling the measurements, it requires a parameters for the number of shots, <code class="docutils literal notranslate"><span class="pre">n_shots</span></code>.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">exp_a</span> <span class="o">=</span> <span class="n">expval_joint_analytical</span><span class="p">(</span><span class="n">qdev</span><span class="p">,</span> <span class="s2">&quot;Z&quot;</span><span class="p">)</span>
+<span class="n">exp_s</span> <span class="o">=</span> <span class="n">expval_joint_sampling</span><span class="p">(</span><span class="n">qdev</span><span class="p">,</span> <span class="s2">&quot;Z&quot;</span><span class="p">,</span> <span class="n">n_shots</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">exp_a</span><span class="p">,</span> <span class="n">exp_s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+tensor([0.8515]) tensor([0.8184])
+</pre></div></div>
+</div>
+<p>The two numbers are about the same, and if we increase the number of shots for the joint sampling, its expected value should approach the same value as the analytical.</p>
+</section>
+<section id="Calculating-quantum-gradients">
+<h2>Calculating quantum gradients<a class="headerlink" href="#Calculating-quantum-gradients" title="Link to this heading">#</a></h2>
+<p>From the expected values output, notice that the analytical expected value has an automatically-calculated gradient which can be used when constructing quantum machine learning models. This is because TorchQuantum automatically calculates the gradients. Let’s find the gradient of each individual gate.</p>
+<p>To do so, we can create the circuit slightly differently, saving each operation as a variable then adding it to the circuit. We can then once again get the expected value with <code class="docutils literal notranslate"><span class="pre">expval_joint_analytical</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">qdev</span> <span class="o">=</span> <span class="n">tq</span><span class="o">.</span><span class="n">QuantumDevice</span><span class="p">(</span><span class="n">n_wires</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">op1</span> <span class="o">=</span> <span class="n">tq</span><span class="o">.</span><span class="n">RX</span><span class="p">(</span><span class="n">has_params</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">trainable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">init_params</span><span class="o">=</span><span class="mf">0.54</span><span class="p">)</span>
+<span class="n">op1</span><span class="p">(</span><span class="n">qdev</span><span class="p">,</span> <span class="n">wires</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">op2</span> <span class="o">=</span> <span class="n">tq</span><span class="o">.</span><span class="n">RY</span><span class="p">(</span><span class="n">has_params</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">trainable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">init_params</span><span class="o">=</span><span class="mf">0.12</span><span class="p">)</span>
+<span class="n">op2</span><span class="p">(</span><span class="n">qdev</span><span class="p">,</span> <span class="n">wires</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+
+<span class="n">expval</span> <span class="o">=</span> <span class="n">expval_joint_analytical</span><span class="p">(</span><span class="n">qdev</span><span class="p">,</span> <span class="s2">&quot;Z&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We can then call <code class="docutils literal notranslate"><span class="pre">.backward()</span></code> on the expected value, just like in PyTorch. Afterwards, we can see the gradient of each operation under the <code class="docutils literal notranslate"><span class="pre">params</span></code> option.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">expval</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+
+<span class="c1"># calculate the gradients for each operation!</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">op1</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">grad</span><span class="p">,</span> <span class="n">op2</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">grad</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+tensor([[-0.5104]]) tensor([[-0.1027]])
+</pre></div></div>
+</div>
+</section>
+<section id="Optimization">
+<h2>Optimization<a class="headerlink" href="#Optimization" title="Link to this heading">#</a></h2>
+<p>Next, let’s make use of PyTorch’s optimizers to optimize the two circuit parameters <span class="math notranslate nohighlight">\(\phi_1\)</span> and <span class="math notranslate nohighlight">\(\phi_2\)</span> such that the qubit, originally in state |0⟩, is rotated to be in state |1⟩. This is equivalent to measuring a Pauli-Z expectation value of -1, since the state |1⟩ is an eigenvector of the Pauli-Z matrix with eigenvalue λ=−1.</p>
+<p>To construct this circuit, we can use a class similar to a PyTorch module! We can begin by importing torch.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+</pre></div>
+</div>
+</div>
+<p>We can next create the class extending the PyTorch module and add our gates in a similar fashion as the previous steps.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torchquantum</span> <span class="k">as</span> <span class="nn">tq</span>
+<span class="kn">import</span> <span class="nn">torchquantum.functional</span> <span class="k">as</span> <span class="nn">tqf</span>
+
+
+<span class="k">class</span> <span class="nc">OptimizationModel</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rx0</span> <span class="o">=</span> <span class="n">tq</span><span class="o">.</span><span class="n">RX</span><span class="p">(</span><span class="n">has_params</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">trainable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">init_params</span><span class="o">=</span><span class="mf">0.011</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ry0</span> <span class="o">=</span> <span class="n">tq</span><span class="o">.</span><span class="n">RY</span><span class="p">(</span><span class="n">has_params</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">trainable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">init_params</span><span class="o">=</span><span class="mf">0.012</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># create a quantum device to run the gates</span>
+        <span class="n">qdev</span> <span class="o">=</span> <span class="n">tq</span><span class="o">.</span><span class="n">QuantumDevice</span><span class="p">(</span><span class="n">n_wires</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># add some trainable gates (need to instantiate ahead of time)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rx0</span><span class="p">(</span><span class="n">qdev</span><span class="p">,</span> <span class="n">wires</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ry0</span><span class="p">(</span><span class="n">qdev</span><span class="p">,</span> <span class="n">wires</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">expval_joint_analytical</span><span class="p">(</span><span class="n">qdev</span><span class="p">,</span> <span class="s2">&quot;Z&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>To optimize the rotation, we need to define a cost function. By minimizing the cost function, the optimizer will determine the values of the circuit parameters that produce the desired outcome.</p>
+<p>In this case, our desired outcome is a Pauli-Z expectation value of −1. Since we know that the Pauli-Z expectation is bound between [−1, 1], we can define our cost directly as the output of the circuit.</p>
+<p>Similar to PyTorch, we can create a train function to compute the gradients of the loss function and have the optimizer perform an optimization step.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">):</span>
+    <span class="n">targets</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">()</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">outputs</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+    <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>Finally, we can run the model. We can import PyTorch’s gradient descent module and use it to optimize our model.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">seed</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+    <span class="n">use_cuda</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span>
+    <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">use_cuda</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">OptimizationModel</span><span class="p">()</span>
+    <span class="n">n_epochs</span> <span class="o">=</span> <span class="mi">200</span>
+    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_epochs</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="c1"># train</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">rx0</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">model</span><span class="o">.</span><span class="n">ry0</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">output</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loss after step </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">loss</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Finally, we can call the main function and run the entire sequence!</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Epoch 1: (0.012099898420274258, 0.013199898414313793)
+Epoch 2: (0.013309753499925137, 0.014519752934575081)
+Epoch 3: (0.014640549197793007, 0.015971548855304718)
+Epoch 4: (0.01610436476767063, 0.017568465322256088)
+Epoch 5: (0.01771448366343975, 0.01932499371469021)
+Epoch 6: (0.019485509023070335, 0.02125706896185875)
+Epoch 7: (0.021433496847748756, 0.023382212966680527)
+Epoch 8: (0.023576095700263977, 0.02571968361735344)
+Epoch 9: (0.025932706892490387, 0.028290653601288795)
+Epoch 10: (0.028524650260806084, 0.03111839108169079)
+Loss after step 10: 0.9992638230323792
+Epoch 11: (0.031375348567962646, 0.03422846272587776)
+Epoch 12: (0.0345105305314064, 0.03764895722270012)
+Epoch 13: (0.037958454340696335, 0.041410721838474274)
+Epoch 14: (0.04175013676285744, 0.04554762691259384)
+Epoch 15: (0.04591960832476616, 0.050096847116947174)
+Epoch 16: (0.05050419643521309, 0.055099159479141235)
+Epoch 17: (0.05554480850696564, 0.06059926748275757)
+Epoch 18: (0.06108624115586281, 0.06664614379405975)
+Epoch 19: (0.06717751175165176, 0.07329340279102325)
+Epoch 20: (0.07387219369411469, 0.08059966564178467)
+Loss after step 20: 0.9950657486915588
+Epoch 21: (0.08122873306274414, 0.08862894773483276)
+Epoch 22: (0.08931083232164383, 0.09745106101036072)
+Epoch 23: (0.09818772971630096, 0.10714197158813477)
+Epoch 24: (0.10793451964855194, 0.11778417229652405)
+Epoch 25: (0.11863239109516144, 0.12946699559688568)
+Epoch 26: (0.13036876916885376, 0.14228680729866028)
+Epoch 27: (0.14323736727237701, 0.15634718537330627)
+Epoch 28: (0.15733805298805237, 0.17175881564617157)
+Epoch 29: (0.172776460647583, 0.18863925337791443)
+Epoch 30: (0.18966329097747803, 0.20711229741573334)
+Loss after step 30: 0.9676356315612793
+Epoch 31: (0.20811320841312408, 0.2273070216178894)
+Epoch 32: (0.2282431572675705, 0.2493562251329422)
+Epoch 33: (0.2501700222492218, 0.27339422702789307)
+Epoch 34: (0.2740074098110199, 0.29955384135246277)
+Epoch 35: (0.2998615801334381, 0.32796236872673035)
+Epoch 36: (0.32782599329948425, 0.35873648524284363)
+Epoch 37: (0.3579748272895813, 0.39197587966918945)
+Epoch 38: (0.3903552293777466, 0.427755743265152)
+Epoch 39: (0.42497843503952026, 0.46611812710762024)
+Epoch 40: (0.4618101119995117, 0.5070626139640808)
+Loss after step 40: 0.8138567805290222
+Epoch 41: (0.5007606744766235, 0.5505368709564209)
+Epoch 42: (0.5416762828826904, 0.5964280366897583)
+Epoch 43: (0.5843320488929749, 0.6445562839508057)
+Epoch 44: (0.6284285187721252, 0.6946715116500854)
+Epoch 45: (0.6735928058624268, 0.7464552521705627)
+Epoch 46: (0.7193858623504639, 0.7995281219482422)
+Epoch 47: (0.7653157711029053, 0.8534636497497559)
+Epoch 48: (0.8108565211296082, 0.9078077673912048)
+Epoch 49: (0.8554709553718567, 0.9621021151542664)
+Epoch 50: (0.8986347317695618, 1.0159088373184204)
+Loss after step 50: 0.3750203549861908
+Epoch 51: (0.9398593902587891, 1.0688340663909912)
+Epoch 52: (0.9787107706069946, 1.1205471754074097)
+Epoch 53: (1.0148218870162964, 1.1707944869995117)
+Epoch 54: (1.0478986501693726, 1.2194054126739502)
+Epoch 55: (1.0777196884155273, 1.2662931680679321)
+Epoch 56: (1.1041301488876343, 1.311449408531189)
+Epoch 57: (1.127032995223999, 1.354935884475708)
+Epoch 58: (1.1463772058486938, 1.3968735933303833)
+Epoch 59: (1.1621465682983398, 1.4374314546585083)
+Epoch 60: (1.1743487119674683, 1.4768157005310059)
+Loss after step 60: 0.052838265895843506
+Epoch 61: (1.1830050945281982, 1.5152597427368164)
+Epoch 62: (1.1881437301635742, 1.553015947341919)
+Epoch 63: (1.1897931098937988, 1.590348243713379)
+Epoch 64: (1.1879782676696777, 1.6275262832641602)
+Epoch 65: (1.1827187538146973, 1.6648198366165161)
+Epoch 66: (1.1740283966064453, 1.702493667602539)
+Epoch 67: (1.1619168519973755, 1.7408030033111572)
+Epoch 68: (1.146392583847046, 1.7799879312515259)
+Epoch 69: (1.1274679899215698, 1.820267915725708)
+Epoch 70: (1.1051654815673828, 1.8618348836898804)
+Loss after step 70: -0.10590392351150513
+Epoch 71: (1.0795255899429321, 1.9048453569412231)
+Epoch 72: (1.0506160259246826, 1.9494123458862305)
+Epoch 73: (1.018541693687439, 1.9955958127975464)
+Epoch 74: (0.9834545850753784, 2.043394088745117)
+Epoch 75: (0.9455628991127014, 2.0927350521087646)
+Epoch 76: (0.9051381945610046, 2.1434707641601562)
+Epoch 77: (0.8625186085700989, 2.1953752040863037)
+Epoch 78: (0.8181073665618896, 2.2481465339660645)
+Epoch 79: (0.7723652124404907, 2.30141544342041)
+Epoch 80: (0.7257967591285706, 2.354759931564331)
+Loss after step 80: -0.4779837727546692
+Epoch 81: (0.6789312362670898, 2.4077253341674805)
+Epoch 82: (0.6322994232177734, 2.459847927093506)
+Epoch 83: (0.5864096879959106, 2.5106801986694336)
+Epoch 84: (0.5417252779006958, 2.5598134994506836)
+Epoch 85: (0.4986463487148285, 2.6068966388702393)
+Epoch 86: (0.4574976861476898, 2.6516494750976562)
+Epoch 87: (0.4185234606266022, 2.6938676834106445)
+Epoch 88: (0.38188809156417847, 2.7334227561950684)
+Epoch 89: (0.34768232703208923, 2.770256519317627)
+Epoch 90: (0.31593260169029236, 2.8043713569641113)
+Loss after step 90: -0.876086413860321
+Epoch 91: (0.28661224246025085, 2.835820436477661)
+Epoch 92: (0.25965315103530884, 2.8646953105926514)
+Epoch 93: (0.23495660722255707, 2.891116142272949)
+Epoch 94: (0.21240299940109253, 2.915221691131592)
+Epoch 95: (0.1918598860502243, 2.937161445617676)
+Epoch 96: (0.1731884628534317, 2.957089900970459)
+Epoch 97: (0.156248539686203, 2.97516131401062)
+Epoch 98: (0.14090220630168915, 2.991525888442993)
+Epoch 99: (0.12701639533042908, 3.0063281059265137)
+Epoch 100: (0.11446458846330643, 3.019704818725586)
+Loss after step 100: -0.9828835129737854
+Epoch 101: (0.1031278446316719, 3.0317838191986084)
+Epoch 102: (0.09289533644914627, 3.042684316635132)
+Epoch 103: (0.08366449177265167, 3.052516460418701)
+Epoch 104: (0.07534093409776688, 3.0613811016082764)
+Epoch 105: (0.0678381696343422, 3.069370985031128)
+Epoch 106: (0.06107722595334053, 3.0765702724456787)
+Epoch 107: (0.054986197501420975, 3.0830557346343994)
+Epoch 108: (0.0494997613132, 3.088897228240967)
+Epoch 109: (0.04455867409706116, 3.0941579341888428)
+Epoch 110: (0.040109291672706604, 3.0988948345184326)
+Loss after step 110: -0.997883677482605
+Epoch 111: (0.03610309213399887, 3.1031599044799805)
+Epoch 112: (0.03249623253941536, 3.106999635696411)
+Epoch 113: (0.029249126091599464, 3.1104564666748047)
+Epoch 114: (0.026326047256588936, 3.1135683059692383)
+Epoch 115: (0.023694779723882675, 3.1163694858551025)
+Epoch 116: (0.021326277405023575, 3.1188907623291016)
+Epoch 117: (0.019194360822439194, 3.1211602687835693)
+Epoch 118: (0.01727544330060482, 3.1232030391693115)
+Epoch 119: (0.015548276714980602, 3.1250417232513428)
+Epoch 120: (0.013993724249303341, 3.1266965866088867)
+Loss after step 120: -0.9997422099113464
+Epoch 121: (0.012594552710652351, 3.128185987472534)
+Epoch 122: (0.011335243470966816, 3.1295266151428223)
+Epoch 123: (0.010201825760304928, 3.130733013153076)
+Epoch 124: (0.00918172113597393, 3.131819009780884)
+Epoch 125: (0.008263605646789074, 3.132796287536621)
+Epoch 126: (0.0074372864328324795, 3.1336758136749268)
+Epoch 127: (0.006693588104099035, 3.134467363357544)
+Epoch 128: (0.006024251226335764, 3.1351797580718994)
+Epoch 129: (0.005421841982752085, 3.1358211040496826)
+Epoch 130: (0.004879669286310673, 3.1363983154296875)
+Loss after step 130: -0.9999685883522034
+Epoch 131: (0.004391710739582777, 3.13691782951355)
+Epoch 132: (0.0039525460451841354, 3.137385368347168)
+Epoch 133: (0.0035572960041463375, 3.1378061771392822)
+Epoch 134: (0.003201569663360715, 3.1381847858428955)
+Epoch 135: (0.0028814151883125305, 3.1385254859924316)
+Epoch 136: (0.0025932753924280405, 3.1388320922851562)
+Epoch 137: (0.002333949087187648, 3.139108180999756)
+Epoch 138: (0.002100554993376136, 3.1393566131591797)
+Epoch 139: (0.0018905001925304532, 3.139580249786377)
+Epoch 140: (0.0017014506738632917, 3.1397814750671387)
+Loss after step 140: -0.9999963045120239
+Epoch 141: (0.001531305955722928, 3.139962673187256)
+Epoch 142: (0.0013781756861135364, 3.1401257514953613)
+Epoch 143: (0.0012403583386912942, 3.140272378921509)
+Epoch 144: (0.0011163227027282119, 3.140404462814331)
+Epoch 145: (0.0010046905372291803, 3.1405231952667236)
+Epoch 146: (0.0009042215533554554, 3.1406302452087402)
+Epoch 147: (0.0008137994445860386, 3.1407265663146973)
+Epoch 148: (0.0007324195466935635, 3.140813112258911)
+Epoch 149: (0.0006591776036657393, 3.1408910751342773)
+Epoch 150: (0.0005932598724029958, 3.140961170196533)
+Loss after step 150: -0.9999995231628418
+Epoch 151: (0.0005339339259080589, 3.141024351119995)
+Epoch 152: (0.00048054056242108345, 3.1410810947418213)
+Epoch 153: (0.000432486500358209, 3.141132354736328)
+Epoch 154: (0.00038923785905353725, 3.1411783695220947)
+Epoch 155: (0.00035031407605856657, 3.1412198543548584)
+Epoch 156: (0.0003152826684527099, 3.1412570476531982)
+Epoch 157: (0.0002837544016074389, 3.1412906646728516)
+Epoch 158: (0.0002553789527155459, 3.1413209438323975)
+Epoch 159: (0.00022984105453360826, 3.141348123550415)
+Epoch 160: (0.00020685694471467286, 3.1413726806640625)
+Loss after step 160: -1.0
+Epoch 161: (0.0001861712516983971, 3.14139461517334)
+Epoch 162: (0.0001675541279837489, 3.1414144039154053)
+Epoch 163: (0.00015079871809575707, 3.141432285308838)
+Epoch 164: (0.00013571884483098984, 3.1414482593536377)
+Epoch 165: (0.0001221469574375078, 3.141462802886963)
+Epoch 166: (0.00010993226169375703, 3.1414756774902344)
+Epoch 167: (9.893903188640252e-05, 3.1414873600006104)
+Epoch 168: (8.904512651497498e-05, 3.141497850418091)
+Epoch 169: (8.014061313588172e-05, 3.141507387161255)
+Epoch 170: (7.212655327748507e-05, 3.1415159702301025)
+Loss after step 170: -1.0
+Epoch 171: (6.491389649454504e-05, 3.141523599624634)
+Epoch 172: (5.8422505389899015e-05, 3.1415305137634277)
+Epoch 173: (5.258025339571759e-05, 3.1415367126464844)
+Epoch 174: (4.732222805614583e-05, 3.1415421962738037)
+Epoch 175: (4.2590003431541845e-05, 3.141547203063965)
+Epoch 176: (3.833100345218554e-05, 3.1415517330169678)
+Epoch 177: (3.4497901651775464e-05, 3.1415557861328125)
+Epoch 178: (3.10481118503958e-05, 3.141559362411499)
+Epoch 179: (2.794330066535622e-05, 3.1415627002716064)
+Epoch 180: (2.5148970962618478e-05, 3.1415657997131348)
+Loss after step 180: -1.0
+Epoch 181: (2.263407441205345e-05, 3.141568422317505)
+Epoch 182: (2.0370667698443867e-05, 3.141570806503296)
+Epoch 183: (1.83336014742963e-05, 3.141572952270508)
+Epoch 184: (1.6500242054462433e-05, 3.1415748596191406)
+Epoch 185: (1.485021766711725e-05, 3.1415765285491943)
+Epoch 186: (1.3365195627557114e-05, 3.141578197479248)
+Epoch 187: (1.2028675882902462e-05, 3.1415796279907227)
+Epoch 188: (1.0825808203662746e-05, 3.141580820083618)
+Epoch 189: (9.743227565195411e-06, 3.1415820121765137)
+Epoch 190: (8.76890499057481e-06, 3.14158296585083)
+Loss after step 190: -1.0
+Epoch 191: (7.89201476436574e-06, 3.1415839195251465)
+Epoch 192: (7.1028134698281065e-06, 3.141584873199463)
+Epoch 193: (6.392532213794766e-06, 3.1415855884552)
+Epoch 194: (5.753278855991084e-06, 3.1415863037109375)
+Epoch 195: (5.177951152290916e-06, 3.141587018966675)
+Epoch 196: (4.660155809688149e-06, 3.141587495803833)
+Epoch 197: (4.194140274194069e-06, 3.141587972640991)
+Epoch 198: (3.7747263377241325e-06, 3.1415884494781494)
+Epoch 199: (3.3972537494264543e-06, 3.1415889263153076)
+Epoch 200: (3.057528374483809e-06, 3.141589403152466)
+Loss after step 200: -1.0
+</pre></div></div>
+</div>
+<p>We can see that the optimization converges after approximately 160 steps.</p>
+<p>Substituting this into the theoretical result <span class="math notranslate nohighlight">\(⟨ψ∣σ_z∣ψ⟩ = \cos ϕ_1 \cos ϕ_2\)</span>, we can verify that this is indeed one possible value of the circuit parameters that produces <span class="math notranslate nohighlight">\(⟨ψ∣σ_z∣ψ⟩ = −1\)</span>, resulting in the qubit being rotated to the state |1⟩.</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2021, Hanrui Wang
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">TorchQuantum Qubit Rotation Tutorial</a><ul>
+<li><a class="reference internal" href="#The-quantum-circuit">The quantum circuit</a></li>
+<li><a class="reference internal" href="#Importing-TorchQuantum">Importing TorchQuantum</a></li>
+<li><a class="reference internal" href="#Creating-a-device">Creating a device</a></li>
+<li><a class="reference internal" href="#Constructing-the-Circuit">Constructing the Circuit</a></li>
+<li><a class="reference internal" href="#Calculating-quantum-gradients">Calculating quantum gradients</a></li>
+<li><a class="reference internal" href="#Optimization">Optimization</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </body>
+</html>

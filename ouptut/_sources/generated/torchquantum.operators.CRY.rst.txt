@@ -1,0 +1,32 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum
+
+operators.CRY
+=============
+
+.. autoclass:: operators.CRY
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: operators.CRY.func
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: operators.CRY.num_params
+    .. autoattribute:: operators.CRY.num_wires
+    .. autoattribute:: operators.CRY.training
+

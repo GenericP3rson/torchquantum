@@ -1,0 +1,32 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum.operator
+
+CRZ
+===
+
+.. autoclass:: CRZ
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: CRZ.func
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: CRZ.num_params
+    .. autoattribute:: CRZ.num_wires
+    .. autoattribute:: CRZ.training
+

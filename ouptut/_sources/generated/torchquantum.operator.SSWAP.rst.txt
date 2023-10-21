@@ -1,0 +1,33 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum.operator
+
+SSWAP
+=====
+
+.. autoclass:: SSWAP
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: SSWAP.func
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: SSWAP.matrix
+    .. autoattribute:: SSWAP.num_params
+    .. autoattribute:: SSWAP.num_wires
+    .. autoattribute:: SSWAP.training
+

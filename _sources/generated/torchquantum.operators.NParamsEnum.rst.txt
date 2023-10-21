@@ -1,0 +1,25 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum
+
+operators.NParamsEnum
+=====================
+
+.. autoclass:: operators.NParamsEnum
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: operators.NParamsEnum.AnyNParams
+

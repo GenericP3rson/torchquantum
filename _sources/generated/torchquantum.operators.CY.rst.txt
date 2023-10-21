@@ -1,0 +1,33 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum
+
+operators.CY
+============
+
+.. autoclass:: operators.CY
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: operators.CY.func
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: operators.CY.matrix
+    .. autoattribute:: operators.CY.num_params
+    .. autoattribute:: operators.CY.num_wires
+    .. autoattribute:: operators.CY.training
+

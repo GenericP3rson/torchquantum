@@ -1,0 +1,32 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum.operator
+
+RZ
+==
+
+.. autoclass:: RZ
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: RZ.func
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: RZ.num_params
+    .. autoattribute:: RZ.num_wires
+    .. autoattribute:: RZ.training
+

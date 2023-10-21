@@ -1,0 +1,32 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum.operator
+
+PhaseShift
+==========
+
+.. autoclass:: PhaseShift
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: PhaseShift.func
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: PhaseShift.num_params
+    .. autoattribute:: PhaseShift.num_wires
+    .. autoattribute:: PhaseShift.training
+

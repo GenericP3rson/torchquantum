@@ -1,0 +1,35 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum
+
+operators.QubitUnitaryFast
+==========================
+
+.. autoclass:: operators.QubitUnitaryFast
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: operators.QubitUnitaryFast.build_params
+    .. automethod:: operators.QubitUnitaryFast.from_controlled_operation
+    .. automethod:: operators.QubitUnitaryFast.func
+    .. automethod:: operators.QubitUnitaryFast.reset_params
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: operators.QubitUnitaryFast.num_params
+    .. autoattribute:: operators.QubitUnitaryFast.num_wires
+    .. autoattribute:: operators.QubitUnitaryFast.training
+

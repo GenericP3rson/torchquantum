@@ -1,0 +1,472 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="paulix" href="torchquantum.functional.paulix.html" /><link rel="prev" title="hadamard" href="torchquantum.functional.hadamard.html" />
+
+    <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
+        <title>shadamard - TorchQuantum 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=362ab14a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">TorchQuantum 0.1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">TorchQuantum 0.1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../api_torchquantum.html">torchquantum</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../api_functional.html">torchquantum.functional</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of torchquantum.functional</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.apply_unitary_einsum.html">apply_unitary_einsum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.apply_unitary_bmm.html">apply_unitary_bmm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.gate_wrapper.html">gate_wrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.reset.html">reset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.hadamard.html">hadamard</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">shadamard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.paulix.html">paulix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.pauliy.html">pauliy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.pauliz.html">pauliz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.i.html">i</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.s.html">s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.t.html">t</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.sx.html">sx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.cnot.html">cnot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.cz.html">cz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.cy.html">cy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.rx.html">rx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.ry.html">ry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.rz.html">rz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.rxx.html">rxx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.ryy.html">ryy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.rzz.html">rzz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.zz.html">zz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.rzx.html">rzx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.zx.html">zx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.swap.html">swap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.sswap.html">sswap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.cswap.html">cswap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.toffoli.html">toffoli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.phaseshift.html">phaseshift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.p.html">p</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.cp.html">cp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.rot.html">rot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.multirz.html">multirz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.crx.html">crx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.cry.html">cry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.crz.html">crz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.crot.html">crot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.u1.html">u1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.u2.html">u2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.u3.html">u3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.u.html">u</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.cu1.html">cu1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.cu2.html">cu2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.cu3.html">cu3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.cu.html">cu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.qubitunitary.html">qubitunitary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.qubitunitaryfast.html">qubitunitaryfast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.qubitunitarystrict.html">qubitunitarystrict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.multicnot.html">multicnot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.multixcnot.html">multixcnot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.x.html">x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.y.html">y</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.z.html">z</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.zz.html">zz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.cx.html">cx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.ccnot.html">ccnot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.ccx.html">ccx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.reset.html">reset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.singleexcitation.html">singleexcitation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.ecr.html">ecr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.functional.echoedcrossresonance.html">echoedcrossresonance</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api_operators.html">torchquantum.operators</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of torchquantum.operators</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.WiresEnum.html">operators.WiresEnum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.NParamsEnum.html">operators.NParamsEnum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.AllWires.html">AllWires</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.AnyWires.html">AnyWires</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.Operator.html">operators.Operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.Observable.html">operators.Observable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.Operation.html">operators.Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.DiagonalOperation.html">operators.DiagonalOperation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.Hadamard.html">operators.Hadamard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.SHadamard.html">operators.SHadamard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.PauliX.html">operators.PauliX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.PauliY.html">operators.PauliY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.PauliZ.html">operators.PauliZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.I.html">operators.I</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.S.html">operators.S</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.T.html">operators.T</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.SX.html">operators.SX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.CNOT.html">operators.CNOT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.CZ.html">operators.CZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.CY.html">operators.CY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.RX.html">operators.RX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.RY.html">operators.RY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.RZ.html">operators.RZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.RXX.html">operators.RXX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.RYY.html">operators.RYY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.RZZ.html">operators.RZZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.RZX.html">operators.RZX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.SWAP.html">operators.SWAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.SSWAP.html">operators.SSWAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.CSWAP.html">operators.CSWAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.Toffoli.html">operators.Toffoli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.PhaseShift.html">operators.PhaseShift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.Rot.html">operators.Rot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.MultiRZ.html">operators.MultiRZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.CRX.html">operators.CRX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.CRY.html">operators.CRY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.CRZ.html">operators.CRZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.CRot.html">operators.CRot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.U1.html">operators.U1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.U2.html">operators.U2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.U3.html">operators.U3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.CU1.html">operators.CU1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.CU2.html">operators.CU2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.CU3.html">operators.CU3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.QubitUnitary.html">operators.QubitUnitary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.QubitUnitaryFast.html">operators.QubitUnitaryFast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.TrainableUnitary.html">operators.TrainableUnitary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.TrainableUnitaryStrict.html">operators.TrainableUnitaryStrict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.MultiCNOT.html">operators.MultiCNOT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.MultiXCNOT.html">operators.MultiXCNOT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.Reset.html">operators.Reset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.SingleExcitation.html">operators.SingleExcitation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.EchoedCrossResonance.html">operators.EchoedCrossResonance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.operators.ECR.html">operators.ECR</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api_layers.html">torchquantum.layers</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of torchquantum.layers</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.layers.QuantumModuleFromOps.html">layers.QuantumModuleFromOps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.layers.TrainableOpAll.html">layers.TrainableOpAll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.layers.ClassicalInOpAll.html">layers.ClassicalInOpAll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.layers.FixedOpAll.html">layers.FixedOpAll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.layers.TwoQAll.html">layers.TwoQAll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.layers.RandomLayer.html">layers.RandomLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.layers.RandomLayerAllTypes.html">layers.RandomLayerAllTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.layers.Op1QAllLayer.html">layers.Op1QAllLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.layers.RandomOp1All.html">layers.RandomOp1All</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.layers.Op2QAllLayer.html">layers.Op2QAllLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.layers.Op2QButterflyLayer.html">layers.Op2QButterflyLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.layers.Op2QDenseLayer.html">layers.Op2QDenseLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.layers.CXLayer.html">layers.CXLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.layers.CXCXCXLayer.html">layers.CXCXCXLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.layers.SWAPSWAPLayer.html">layers.SWAPSWAPLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.layers.RXYZCXLayer0.html">layers.RXYZCXLayer0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="torchquantum.layers.QFTLayer.html">layers.QFTLayer</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../usage_installation.html">Installation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../examples/index.html">TorchQuantum Examples</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of TorchQuantum Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples/gradient_pruning/probabilistic_gradient_pruning.html">Probabilistic gradient pruning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/param_shift_onchip_training/param_shift_onchip_training.html">Apply parameters shift rules to train quantum model using TorchQuantum.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/quantum_kernel_method/quantum_kernel_method.html">Quantum Kernel Methods for IRIS dataset classification with TorchQuantum.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/quanvolution/quanvolution.html">Quanvolution (Quantum convolution) for MNIST image classification with TorchQuantum.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/superdense_coding/superdense_coding_torchquantum.html">Superdense Coding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/superdense_coding/superdense_coding_torchquantum.html#References:">References:</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <p id="module-torchquantum.functional">MIT License</p>
+<p>Copyright (c) 2020-present TorchQuantum Authors</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
+<section id="shadamard">
+<h1>shadamard<a class="headerlink" href="#shadamard" title="Link to this heading">#</a></h1>
+<dl class="py method">
+<dt class="sig sig-object py" id="torchquantum.functional.shadamard">
+<span class="sig-prename descclassname"><span class="pre">functional.</span></span><span class="sig-name descname"><span class="pre">shadamard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wires</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_wires</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">static</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent_graph</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comp_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bmm'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#torchquantum.functional.shadamard" title="Link to this definition">#</a></dt>
+<dd><p>Perform the shadamard gate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>q_device</strong> (<em>tq.QuantumDevice</em>) – The QuantumDevice.</p></li>
+<li><p><strong>wires</strong> (<em>Union</em><em>[</em><em>List</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>]</em><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>]</em>) – Which qubit(s) to apply the gate.</p></li>
+<li><p><strong>params</strong> (<em>torch.Tensor</em><em>, </em><em>optional</em>) – Parameters (if any) of the gate.
+Default to None.</p></li>
+<li><p><strong>n_wires</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em>, </em><em>optional</em>) – Number of qubits the gate is applied to.
+Default to None.</p></li>
+<li><p><strong>static</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether use static mode computation.
+Default to False.</p></li>
+<li><p><strong>parent_graph</strong> (<em>tq.QuantumGraph</em><em>, </em><em>optional</em>) – Parent QuantumGraph of
+current operation. Default to None.</p></li>
+<li><p><strong>inverse</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether inverse the gate. Default to False.</p></li>
+<li><p><strong>comp_method</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a><em>, </em><em>optional</em>) – Use ‘bmm’ or ‘einsum’ method to perform</p></li>
+<li><p><strong>'bmm'.</strong> (<em>matrix vector multiplication. Default to</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="torchquantum.functional.paulix.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">paulix</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="torchquantum.functional.hadamard.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">hadamard</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2021, Hanrui Wang
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">shadamard</a><ul>
+<li><a class="reference internal" href="#torchquantum.functional.shadamard"><code class="docutils literal notranslate"><span class="pre">functional.shadamard()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    </body>
+</html>

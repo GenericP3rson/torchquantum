@@ -1,0 +1,36 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum.operator
+
+Operator
+========
+
+.. autoclass:: Operator
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: Operator.forward
+    .. automethod:: Operator.set_wires
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: Operator.eigvals
+    .. autoattribute:: Operator.fixed_ops
+    .. autoattribute:: Operator.matrix
+    .. autoattribute:: Operator.name
+    .. autoattribute:: Operator.parameterized_ops
+    .. autoattribute:: Operator.training
+

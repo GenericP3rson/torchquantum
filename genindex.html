@@ -1,0 +1,682 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="#" /><link rel="search" title="Search" href="search.html" />
+
+    <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 --><title>Index - TorchQuantum 0.1 documentation</title>
+<link rel="stylesheet" type="text/css" href="_static/pygments.css?v=362ab14a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">TorchQuantum 0.1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">TorchQuantum 0.1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api_torchquantum.html">torchquantum</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="api_functional.html">torchquantum.functional</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of torchquantum.functional</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.apply_unitary_einsum.html">apply_unitary_einsum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.apply_unitary_bmm.html">apply_unitary_bmm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.gate_wrapper.html">gate_wrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.reset.html">reset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.hadamard.html">hadamard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.shadamard.html">shadamard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.paulix.html">paulix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.pauliy.html">pauliy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.pauliz.html">pauliz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.i.html">i</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.s.html">s</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.t.html">t</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.sx.html">sx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.cnot.html">cnot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.cz.html">cz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.cy.html">cy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.rx.html">rx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.ry.html">ry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.rz.html">rz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.rxx.html">rxx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.ryy.html">ryy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.rzz.html">rzz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.zz.html">zz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.rzx.html">rzx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.zx.html">zx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.swap.html">swap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.sswap.html">sswap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.cswap.html">cswap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.toffoli.html">toffoli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.phaseshift.html">phaseshift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.p.html">p</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.cp.html">cp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.rot.html">rot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.multirz.html">multirz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.crx.html">crx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.cry.html">cry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.crz.html">crz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.crot.html">crot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.u1.html">u1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.u2.html">u2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.u3.html">u3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.u.html">u</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.cu1.html">cu1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.cu2.html">cu2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.cu3.html">cu3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.cu.html">cu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.qubitunitary.html">qubitunitary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.qubitunitaryfast.html">qubitunitaryfast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.qubitunitarystrict.html">qubitunitarystrict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.multicnot.html">multicnot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.multixcnot.html">multixcnot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.x.html">x</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.y.html">y</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.z.html">z</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.zz.html">zz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.cx.html">cx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.ccnot.html">ccnot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.ccx.html">ccx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.reset.html">reset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.singleexcitation.html">singleexcitation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.ecr.html">ecr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.functional.echoedcrossresonance.html">echoedcrossresonance</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="api_operators.html">torchquantum.operators</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of torchquantum.operators</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.WiresEnum.html">operators.WiresEnum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.NParamsEnum.html">operators.NParamsEnum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.AllWires.html">AllWires</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.AnyWires.html">AnyWires</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.Operator.html">operators.Operator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.Observable.html">operators.Observable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.Operation.html">operators.Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.DiagonalOperation.html">operators.DiagonalOperation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.Hadamard.html">operators.Hadamard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.SHadamard.html">operators.SHadamard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.PauliX.html">operators.PauliX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.PauliY.html">operators.PauliY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.PauliZ.html">operators.PauliZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.I.html">operators.I</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.S.html">operators.S</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.T.html">operators.T</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.SX.html">operators.SX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.CNOT.html">operators.CNOT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.CZ.html">operators.CZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.CY.html">operators.CY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.RX.html">operators.RX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.RY.html">operators.RY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.RZ.html">operators.RZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.RXX.html">operators.RXX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.RYY.html">operators.RYY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.RZZ.html">operators.RZZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.RZX.html">operators.RZX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.SWAP.html">operators.SWAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.SSWAP.html">operators.SSWAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.CSWAP.html">operators.CSWAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.Toffoli.html">operators.Toffoli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.PhaseShift.html">operators.PhaseShift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.Rot.html">operators.Rot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.MultiRZ.html">operators.MultiRZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.CRX.html">operators.CRX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.CRY.html">operators.CRY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.CRZ.html">operators.CRZ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.CRot.html">operators.CRot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.U1.html">operators.U1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.U2.html">operators.U2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.U3.html">operators.U3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.CU1.html">operators.CU1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.CU2.html">operators.CU2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.CU3.html">operators.CU3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.QubitUnitary.html">operators.QubitUnitary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.QubitUnitaryFast.html">operators.QubitUnitaryFast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.TrainableUnitary.html">operators.TrainableUnitary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.TrainableUnitaryStrict.html">operators.TrainableUnitaryStrict</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.MultiCNOT.html">operators.MultiCNOT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.MultiXCNOT.html">operators.MultiXCNOT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.Reset.html">operators.Reset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.SingleExcitation.html">operators.SingleExcitation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.EchoedCrossResonance.html">operators.EchoedCrossResonance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.operators.ECR.html">operators.ECR</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="api_layers.html">torchquantum.layers</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of torchquantum.layers</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.layers.QuantumModuleFromOps.html">layers.QuantumModuleFromOps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.layers.TrainableOpAll.html">layers.TrainableOpAll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.layers.ClassicalInOpAll.html">layers.ClassicalInOpAll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.layers.FixedOpAll.html">layers.FixedOpAll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.layers.TwoQAll.html">layers.TwoQAll</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.layers.RandomLayer.html">layers.RandomLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.layers.RandomLayerAllTypes.html">layers.RandomLayerAllTypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.layers.Op1QAllLayer.html">layers.Op1QAllLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.layers.RandomOp1All.html">layers.RandomOp1All</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.layers.Op2QAllLayer.html">layers.Op2QAllLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.layers.Op2QButterflyLayer.html">layers.Op2QButterflyLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.layers.Op2QDenseLayer.html">layers.Op2QDenseLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.layers.CXLayer.html">layers.CXLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.layers.CXCXCXLayer.html">layers.CXCXCXLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.layers.SWAPSWAPLayer.html">layers.SWAPSWAPLayer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.layers.RXYZCXLayer0.html">layers.RXYZCXLayer0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/torchquantum.layers.QFTLayer.html">layers.QFTLayer</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usage_installation.html">Installation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="examples/index.html">TorchQuantum Examples</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of TorchQuantum Examples</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples/gradient_pruning/probabilistic_gradient_pruning.html">Probabilistic gradient pruning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/param_shift_onchip_training/param_shift_onchip_training.html">Apply parameters shift rules to train quantum model using TorchQuantum.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quantum_kernel_method/quantum_kernel_method.html">Quantum Kernel Methods for IRIS dataset classification with TorchQuantum.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/quanvolution/quanvolution.html">Quanvolution (Quantum convolution) for MNIST image classification with TorchQuantum.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/superdense_coding/superdense_coding_torchquantum.html">Superdense Coding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples/superdense_coding/superdense_coding_torchquantum.html#References:">References:</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          
+<section class="genindex-section">
+  <h1 id="index">Index</h1>
+  <div class="genindex-jumpbox"><a href="#A"><strong>A</strong></a> | <a href="#C"><strong>C</strong></a> | <a href="#E"><strong>E</strong></a> | <a href="#G"><strong>G</strong></a> | <a href="#H"><strong>H</strong></a> | <a href="#I"><strong>I</strong></a> | <a href="#M"><strong>M</strong></a> | <a href="#P"><strong>P</strong></a> | <a href="#Q"><strong>Q</strong></a> | <a href="#R"><strong>R</strong></a> | <a href="#S"><strong>S</strong></a> | <a href="#T"><strong>T</strong></a> | <a href="#U"><strong>U</strong></a> | <a href="#X"><strong>X</strong></a> | <a href="#Y"><strong>Y</strong></a> | <a href="#Z"><strong>Z</strong></a></div>
+</section>
+<section id="A" class="genindex-section">
+  <h2>A</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="generated/torchquantum.functional.apply_unitary_bmm.html#torchquantum.functional.apply_unitary_bmm">apply_unitary_bmm() (torchquantum.functional method)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="generated/torchquantum.functional.apply_unitary_einsum.html#torchquantum.functional.apply_unitary_einsum">apply_unitary_einsum() (torchquantum.functional method)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="C" class="genindex-section">
+  <h2>C</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="generated/torchquantum.functional.ccnot.html#torchquantum.functional.ccnot">ccnot() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.ccx.html#torchquantum.functional.ccx">ccx() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.cnot.html#torchquantum.functional.cnot">cnot() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.cp.html#torchquantum.functional.cp">cp() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.crot.html#torchquantum.functional.crot">crot() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.crx.html#torchquantum.functional.crx">crx() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.cry.html#torchquantum.functional.cry">cry() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.crz.html#torchquantum.functional.crz">crz() (torchquantum.functional method)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="generated/torchquantum.functional.cswap.html#torchquantum.functional.cswap">cswap() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.cu.html#torchquantum.functional.cu">cu() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.cu1.html#torchquantum.functional.cu1">cu1() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.cu2.html#torchquantum.functional.cu2">cu2() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.cu3.html#torchquantum.functional.cu3">cu3() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.cx.html#torchquantum.functional.cx">cx() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.cy.html#torchquantum.functional.cy">cy() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.cz.html#torchquantum.functional.cz">cz() (torchquantum.functional method)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="E" class="genindex-section">
+  <h2>E</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="generated/torchquantum.functional.echoedcrossresonance.html#torchquantum.functional.echoedcrossresonance">echoedcrossresonance() (torchquantum.functional method)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="generated/torchquantum.functional.ecr.html#torchquantum.functional.ecr">ecr() (torchquantum.functional method)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="G" class="genindex-section">
+  <h2>G</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="generated/torchquantum.functional.gate_wrapper.html#torchquantum.functional.gate_wrapper">gate_wrapper() (torchquantum.functional method)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="H" class="genindex-section">
+  <h2>H</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="generated/torchquantum.functional.hadamard.html#torchquantum.functional.hadamard">hadamard() (torchquantum.functional method)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="I" class="genindex-section">
+  <h2>I</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="generated/torchquantum.functional.i.html#torchquantum.functional.i">i() (torchquantum.functional method)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="M" class="genindex-section">
+  <h2>M</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li>
+    module
+
+        <ul>
+          <li><a href="api_torchquantum.html#module-torchquantum">torchquantum</a>
+</li>
+          <li><a href="api_functional.html#module-torchquantum.functional">torchquantum.functional</a>, <a href="generated/torchquantum.functional.apply_unitary_bmm.html#module-torchquantum.functional">[1]</a>, <a href="generated/torchquantum.functional.apply_unitary_einsum.html#module-torchquantum.functional">[2]</a>, <a href="generated/torchquantum.functional.ccnot.html#module-torchquantum.functional">[3]</a>, <a href="generated/torchquantum.functional.ccx.html#module-torchquantum.functional">[4]</a>, <a href="generated/torchquantum.functional.cnot.html#module-torchquantum.functional">[5]</a>, <a href="generated/torchquantum.functional.cp.html#module-torchquantum.functional">[6]</a>, <a href="generated/torchquantum.functional.crot.html#module-torchquantum.functional">[7]</a>, <a href="generated/torchquantum.functional.crx.html#module-torchquantum.functional">[8]</a>, <a href="generated/torchquantum.functional.cry.html#module-torchquantum.functional">[9]</a>, <a href="generated/torchquantum.functional.crz.html#module-torchquantum.functional">[10]</a>, <a href="generated/torchquantum.functional.cswap.html#module-torchquantum.functional">[11]</a>, <a href="generated/torchquantum.functional.cu.html#module-torchquantum.functional">[12]</a>, <a href="generated/torchquantum.functional.cu1.html#module-torchquantum.functional">[13]</a>, <a href="generated/torchquantum.functional.cu2.html#module-torchquantum.functional">[14]</a>, <a href="generated/torchquantum.functional.cu3.html#module-torchquantum.functional">[15]</a>, <a href="generated/torchquantum.functional.cx.html#module-torchquantum.functional">[16]</a>, <a href="generated/torchquantum.functional.cy.html#module-torchquantum.functional">[17]</a>, <a href="generated/torchquantum.functional.cz.html#module-torchquantum.functional">[18]</a>, <a href="generated/torchquantum.functional.echoedcrossresonance.html#module-torchquantum.functional">[19]</a>, <a href="generated/torchquantum.functional.ecr.html#module-torchquantum.functional">[20]</a>, <a href="generated/torchquantum.functional.gate_wrapper.html#module-torchquantum.functional">[21]</a>, <a href="generated/torchquantum.functional.hadamard.html#module-torchquantum.functional">[22]</a>, <a href="generated/torchquantum.functional.i.html#module-torchquantum.functional">[23]</a>, <a href="generated/torchquantum.functional.multicnot.html#module-torchquantum.functional">[24]</a>, <a href="generated/torchquantum.functional.multirz.html#module-torchquantum.functional">[25]</a>, <a href="generated/torchquantum.functional.multixcnot.html#module-torchquantum.functional">[26]</a>, <a href="generated/torchquantum.functional.p.html#module-torchquantum.functional">[27]</a>, <a href="generated/torchquantum.functional.paulix.html#module-torchquantum.functional">[28]</a>, <a href="generated/torchquantum.functional.pauliy.html#module-torchquantum.functional">[29]</a>, <a href="generated/torchquantum.functional.pauliz.html#module-torchquantum.functional">[30]</a>, <a href="generated/torchquantum.functional.phaseshift.html#module-torchquantum.functional">[31]</a>, <a href="generated/torchquantum.functional.qubitunitary.html#module-torchquantum.functional">[32]</a>, <a href="generated/torchquantum.functional.qubitunitaryfast.html#module-torchquantum.functional">[33]</a>, <a href="generated/torchquantum.functional.qubitunitarystrict.html#module-torchquantum.functional">[34]</a>, <a href="generated/torchquantum.functional.reset.html#module-torchquantum.functional">[35]</a>, <a href="generated/torchquantum.functional.rot.html#module-torchquantum.functional">[36]</a>, <a href="generated/torchquantum.functional.rx.html#module-torchquantum.functional">[37]</a>, <a href="generated/torchquantum.functional.rxx.html#module-torchquantum.functional">[38]</a>, <a href="generated/torchquantum.functional.ry.html#module-torchquantum.functional">[39]</a>, <a href="generated/torchquantum.functional.ryy.html#module-torchquantum.functional">[40]</a>, <a href="generated/torchquantum.functional.rz.html#module-torchquantum.functional">[41]</a>, <a href="generated/torchquantum.functional.rzx.html#module-torchquantum.functional">[42]</a>, <a href="generated/torchquantum.functional.rzz.html#module-torchquantum.functional">[43]</a>, <a href="generated/torchquantum.functional.s.html#module-torchquantum.functional">[44]</a>, <a href="generated/torchquantum.functional.shadamard.html#module-torchquantum.functional">[45]</a>, <a href="generated/torchquantum.functional.singleexcitation.html#module-torchquantum.functional">[46]</a>, <a href="generated/torchquantum.functional.sswap.html#module-torchquantum.functional">[47]</a>, <a href="generated/torchquantum.functional.swap.html#module-torchquantum.functional">[48]</a>, <a href="generated/torchquantum.functional.sx.html#module-torchquantum.functional">[49]</a>, <a href="generated/torchquantum.functional.t.html#module-torchquantum.functional">[50]</a>, <a href="generated/torchquantum.functional.toffoli.html#module-torchquantum.functional">[51]</a>, <a href="generated/torchquantum.functional.u.html#module-torchquantum.functional">[52]</a>, <a href="generated/torchquantum.functional.u1.html#module-torchquantum.functional">[53]</a>, <a href="generated/torchquantum.functional.u2.html#module-torchquantum.functional">[54]</a>, <a href="generated/torchquantum.functional.u3.html#module-torchquantum.functional">[55]</a>, <a href="generated/torchquantum.functional.x.html#module-torchquantum.functional">[56]</a>, <a href="generated/torchquantum.functional.y.html#module-torchquantum.functional">[57]</a>, <a href="generated/torchquantum.functional.z.html#module-torchquantum.functional">[58]</a>, <a href="generated/torchquantum.functional.zx.html#module-torchquantum.functional">[59]</a>, <a href="generated/torchquantum.functional.zz.html#module-torchquantum.functional">[60]</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="generated/torchquantum.functional.multicnot.html#torchquantum.functional.multicnot">multicnot() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.multirz.html#torchquantum.functional.multirz">multirz() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.multixcnot.html#torchquantum.functional.multixcnot">multixcnot() (torchquantum.functional method)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="P" class="genindex-section">
+  <h2>P</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="generated/torchquantum.functional.p.html#torchquantum.functional.p">p() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.paulix.html#torchquantum.functional.paulix">paulix() (torchquantum.functional method)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="generated/torchquantum.functional.pauliy.html#torchquantum.functional.pauliy">pauliy() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.pauliz.html#torchquantum.functional.pauliz">pauliz() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.phaseshift.html#torchquantum.functional.phaseshift">phaseshift() (torchquantum.functional method)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="Q" class="genindex-section">
+  <h2>Q</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="generated/torchquantum.functional.qubitunitary.html#torchquantum.functional.qubitunitary">qubitunitary() (torchquantum.functional method)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="generated/torchquantum.functional.qubitunitaryfast.html#torchquantum.functional.qubitunitaryfast">qubitunitaryfast() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.qubitunitarystrict.html#torchquantum.functional.qubitunitarystrict">qubitunitarystrict() (torchquantum.functional method)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="R" class="genindex-section">
+  <h2>R</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="generated/torchquantum.functional.reset.html#torchquantum.functional.reset">reset() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.rot.html#torchquantum.functional.rot">rot() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.rx.html#torchquantum.functional.rx">rx() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.rxx.html#torchquantum.functional.rxx">rxx() (torchquantum.functional method)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="generated/torchquantum.functional.ry.html#torchquantum.functional.ry">ry() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.ryy.html#torchquantum.functional.ryy">ryy() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.rz.html#torchquantum.functional.rz">rz() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.rzx.html#torchquantum.functional.rzx">rzx() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.rzz.html#torchquantum.functional.rzz">rzz() (torchquantum.functional method)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="S" class="genindex-section">
+  <h2>S</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="generated/torchquantum.functional.s.html#torchquantum.functional.s">s() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.shadamard.html#torchquantum.functional.shadamard">shadamard() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.singleexcitation.html#torchquantum.functional.singleexcitation">singleexcitation() (torchquantum.functional method)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="generated/torchquantum.functional.sswap.html#torchquantum.functional.sswap">sswap() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.swap.html#torchquantum.functional.swap">swap() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.sx.html#torchquantum.functional.sx">sx() (torchquantum.functional method)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="T" class="genindex-section">
+  <h2>T</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="generated/torchquantum.functional.t.html#torchquantum.functional.t">t() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.toffoli.html#torchquantum.functional.toffoli">toffoli() (torchquantum.functional method)</a>
+</li>
+        <li>
+    torchquantum
+
+        <ul>
+          <li><a href="api_torchquantum.html#module-torchquantum">module</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li>
+    torchquantum.functional
+
+        <ul>
+          <li><a href="api_functional.html#module-torchquantum.functional">module</a>, <a href="generated/torchquantum.functional.apply_unitary_bmm.html#module-torchquantum.functional">[1]</a>, <a href="generated/torchquantum.functional.apply_unitary_einsum.html#module-torchquantum.functional">[2]</a>, <a href="generated/torchquantum.functional.ccnot.html#module-torchquantum.functional">[3]</a>, <a href="generated/torchquantum.functional.ccx.html#module-torchquantum.functional">[4]</a>, <a href="generated/torchquantum.functional.cnot.html#module-torchquantum.functional">[5]</a>, <a href="generated/torchquantum.functional.cp.html#module-torchquantum.functional">[6]</a>, <a href="generated/torchquantum.functional.crot.html#module-torchquantum.functional">[7]</a>, <a href="generated/torchquantum.functional.crx.html#module-torchquantum.functional">[8]</a>, <a href="generated/torchquantum.functional.cry.html#module-torchquantum.functional">[9]</a>, <a href="generated/torchquantum.functional.crz.html#module-torchquantum.functional">[10]</a>, <a href="generated/torchquantum.functional.cswap.html#module-torchquantum.functional">[11]</a>, <a href="generated/torchquantum.functional.cu.html#module-torchquantum.functional">[12]</a>, <a href="generated/torchquantum.functional.cu1.html#module-torchquantum.functional">[13]</a>, <a href="generated/torchquantum.functional.cu2.html#module-torchquantum.functional">[14]</a>, <a href="generated/torchquantum.functional.cu3.html#module-torchquantum.functional">[15]</a>, <a href="generated/torchquantum.functional.cx.html#module-torchquantum.functional">[16]</a>, <a href="generated/torchquantum.functional.cy.html#module-torchquantum.functional">[17]</a>, <a href="generated/torchquantum.functional.cz.html#module-torchquantum.functional">[18]</a>, <a href="generated/torchquantum.functional.echoedcrossresonance.html#module-torchquantum.functional">[19]</a>, <a href="generated/torchquantum.functional.ecr.html#module-torchquantum.functional">[20]</a>, <a href="generated/torchquantum.functional.gate_wrapper.html#module-torchquantum.functional">[21]</a>, <a href="generated/torchquantum.functional.hadamard.html#module-torchquantum.functional">[22]</a>, <a href="generated/torchquantum.functional.i.html#module-torchquantum.functional">[23]</a>, <a href="generated/torchquantum.functional.multicnot.html#module-torchquantum.functional">[24]</a>, <a href="generated/torchquantum.functional.multirz.html#module-torchquantum.functional">[25]</a>, <a href="generated/torchquantum.functional.multixcnot.html#module-torchquantum.functional">[26]</a>, <a href="generated/torchquantum.functional.p.html#module-torchquantum.functional">[27]</a>, <a href="generated/torchquantum.functional.paulix.html#module-torchquantum.functional">[28]</a>, <a href="generated/torchquantum.functional.pauliy.html#module-torchquantum.functional">[29]</a>, <a href="generated/torchquantum.functional.pauliz.html#module-torchquantum.functional">[30]</a>, <a href="generated/torchquantum.functional.phaseshift.html#module-torchquantum.functional">[31]</a>, <a href="generated/torchquantum.functional.qubitunitary.html#module-torchquantum.functional">[32]</a>, <a href="generated/torchquantum.functional.qubitunitaryfast.html#module-torchquantum.functional">[33]</a>, <a href="generated/torchquantum.functional.qubitunitarystrict.html#module-torchquantum.functional">[34]</a>, <a href="generated/torchquantum.functional.reset.html#module-torchquantum.functional">[35]</a>, <a href="generated/torchquantum.functional.rot.html#module-torchquantum.functional">[36]</a>, <a href="generated/torchquantum.functional.rx.html#module-torchquantum.functional">[37]</a>, <a href="generated/torchquantum.functional.rxx.html#module-torchquantum.functional">[38]</a>, <a href="generated/torchquantum.functional.ry.html#module-torchquantum.functional">[39]</a>, <a href="generated/torchquantum.functional.ryy.html#module-torchquantum.functional">[40]</a>, <a href="generated/torchquantum.functional.rz.html#module-torchquantum.functional">[41]</a>, <a href="generated/torchquantum.functional.rzx.html#module-torchquantum.functional">[42]</a>, <a href="generated/torchquantum.functional.rzz.html#module-torchquantum.functional">[43]</a>, <a href="generated/torchquantum.functional.s.html#module-torchquantum.functional">[44]</a>, <a href="generated/torchquantum.functional.shadamard.html#module-torchquantum.functional">[45]</a>, <a href="generated/torchquantum.functional.singleexcitation.html#module-torchquantum.functional">[46]</a>, <a href="generated/torchquantum.functional.sswap.html#module-torchquantum.functional">[47]</a>, <a href="generated/torchquantum.functional.swap.html#module-torchquantum.functional">[48]</a>, <a href="generated/torchquantum.functional.sx.html#module-torchquantum.functional">[49]</a>, <a href="generated/torchquantum.functional.t.html#module-torchquantum.functional">[50]</a>, <a href="generated/torchquantum.functional.toffoli.html#module-torchquantum.functional">[51]</a>, <a href="generated/torchquantum.functional.u.html#module-torchquantum.functional">[52]</a>, <a href="generated/torchquantum.functional.u1.html#module-torchquantum.functional">[53]</a>, <a href="generated/torchquantum.functional.u2.html#module-torchquantum.functional">[54]</a>, <a href="generated/torchquantum.functional.u3.html#module-torchquantum.functional">[55]</a>, <a href="generated/torchquantum.functional.x.html#module-torchquantum.functional">[56]</a>, <a href="generated/torchquantum.functional.y.html#module-torchquantum.functional">[57]</a>, <a href="generated/torchquantum.functional.z.html#module-torchquantum.functional">[58]</a>, <a href="generated/torchquantum.functional.zx.html#module-torchquantum.functional">[59]</a>, <a href="generated/torchquantum.functional.zz.html#module-torchquantum.functional">[60]</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="U" class="genindex-section">
+  <h2>U</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="generated/torchquantum.functional.u.html#torchquantum.functional.u">u() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.u1.html#torchquantum.functional.u1">u1() (torchquantum.functional method)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="generated/torchquantum.functional.u2.html#torchquantum.functional.u2">u2() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.u3.html#torchquantum.functional.u3">u3() (torchquantum.functional method)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="X" class="genindex-section">
+  <h2>X</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="generated/torchquantum.functional.x.html#torchquantum.functional.x">x() (torchquantum.functional method)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="Y" class="genindex-section">
+  <h2>Y</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="generated/torchquantum.functional.y.html#torchquantum.functional.y">y() (torchquantum.functional method)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="Z" class="genindex-section">
+  <h2>Z</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="generated/torchquantum.functional.z.html#torchquantum.functional.z">z() (torchquantum.functional method)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="generated/torchquantum.functional.zx.html#torchquantum.functional.zx">zx() (torchquantum.functional method)</a>
+</li>
+        <li><a href="generated/torchquantum.functional.zz.html#torchquantum.functional.zz">zz() (torchquantum.functional method)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2021, Hanrui Wang
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=2709fde1"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=32e29ea5"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum.operator
+
+EchoedCrossResonance
+====================
+
+.. autoclass:: EchoedCrossResonance
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: EchoedCrossResonance.func
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: EchoedCrossResonance.matrix
+    .. autoattribute:: EchoedCrossResonance.num_params
+    .. autoattribute:: EchoedCrossResonance.num_wires
+    .. autoattribute:: EchoedCrossResonance.training
+

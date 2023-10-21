@@ -1,0 +1,26 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum
+
+operators.WiresEnum
+===================
+
+.. autoclass:: operators.WiresEnum
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: operators.WiresEnum.AnyWires
+    .. autoattribute:: operators.WiresEnum.AllWires
+

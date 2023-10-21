@@ -1,0 +1,9 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. automodule:: torchquantum.functional
+.. currentmodule:: torchquantum.functional
+
+ccx
+===
+
+.. automethod:: torchquantum.functional.ccx

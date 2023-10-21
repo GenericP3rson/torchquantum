@@ -1,0 +1,31 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum
+
+layers.RandomOp1All
+===================
+
+.. autoclass:: layers.RandomOp1All
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: layers.RandomOp1All.build_random_layer
+    .. automethod:: layers.RandomOp1All.forward
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: layers.RandomOp1All.training
+

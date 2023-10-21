@@ -1,0 +1,26 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum
+
+operators.DiagonalOperation
+===========================
+
+.. autoclass:: operators.DiagonalOperation
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: operators.DiagonalOperation.eigvals
+    .. autoattribute:: operators.DiagonalOperation.training
+

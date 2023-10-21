@@ -1,0 +1,32 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum
+
+operators.TrainableUnitaryStrict
+================================
+
+.. autoclass:: operators.TrainableUnitaryStrict
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: operators.TrainableUnitaryStrict.func
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: operators.TrainableUnitaryStrict.num_params
+    .. autoattribute:: operators.TrainableUnitaryStrict.num_wires
+    .. autoattribute:: operators.TrainableUnitaryStrict.training
+

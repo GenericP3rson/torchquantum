@@ -1,0 +1,33 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum.operator
+
+ECR
+===
+
+.. autoclass:: ECR
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: ECR.func
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: ECR.matrix
+    .. autoattribute:: ECR.num_params
+    .. autoattribute:: ECR.num_wires
+    .. autoattribute:: ECR.training
+

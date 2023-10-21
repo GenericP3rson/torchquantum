@@ -1,0 +1,32 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum.operator
+
+SingleExcitation
+================
+
+.. autoclass:: SingleExcitation
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: SingleExcitation.func
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: SingleExcitation.num_params
+    .. autoattribute:: SingleExcitation.num_wires
+    .. autoattribute:: SingleExcitation.training
+

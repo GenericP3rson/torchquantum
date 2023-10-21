@@ -1,0 +1,35 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum.operator
+
+Hadamard
+========
+
+.. autoclass:: Hadamard
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: Hadamard.diagonalizing_gates
+    .. automethod:: Hadamard.func
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: Hadamard.eigvals
+    .. autoattribute:: Hadamard.matrix
+    .. autoattribute:: Hadamard.num_params
+    .. autoattribute:: Hadamard.num_wires
+    .. autoattribute:: Hadamard.training
+

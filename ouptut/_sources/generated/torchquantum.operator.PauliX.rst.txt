@@ -1,0 +1,35 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum.operator
+
+PauliX
+======
+
+.. autoclass:: PauliX
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: PauliX.diagonalizing_gates
+    .. automethod:: PauliX.func
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: PauliX.eigvals
+    .. autoattribute:: PauliX.matrix
+    .. autoattribute:: PauliX.num_params
+    .. autoattribute:: PauliX.num_wires
+    .. autoattribute:: PauliX.training
+

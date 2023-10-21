@@ -1,0 +1,32 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum.operator
+
+Reset
+=====
+
+.. autoclass:: Reset
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: Reset.func
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: Reset.num_params
+    .. autoattribute:: Reset.num_wires
+    .. autoattribute:: Reset.training
+

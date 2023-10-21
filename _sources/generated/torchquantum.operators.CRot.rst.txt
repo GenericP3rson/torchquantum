@@ -1,0 +1,32 @@
+﻿.. role:: hidden
+    :class: hidden-section
+.. currentmodule:: torchquantum
+
+operators.CRot
+==============
+
+.. autoclass:: operators.CRot
+    :show-inheritance:
+
+    .. automethod:: __init__
+
+
+
+
+    .. rubric:: Methods
+
+
+    .. automethod:: operators.CRot.func
+
+
+
+
+    .. rubric:: Attributes
+
+
+
+
+    .. autoattribute:: operators.CRot.num_params
+    .. autoattribute:: operators.CRot.num_wires
+    .. autoattribute:: operators.CRot.training
+
