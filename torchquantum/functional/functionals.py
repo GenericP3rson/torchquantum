@@ -1330,8 +1330,10 @@ def r_matrix(params: torch.Tensor) -> torch.Tensor:
 
     """
 
-    theta = params.type(C_DTYPE)
-    phi = params.type(C_DTYPE)
+    # theta = params.type(C_DTYPE)
+    # phi = params.type(C_DTYPE)
+    theta = params[:, 0].unsqueeze(dim=-1).type(C_DTYPE)
+    phi = params[:, 1].unsqueeze(dim=-1).type(C_DTYPE)
     exp = torch.exp(-1j * phi)
     """
     Seems to be a pytorch bug. Have to explicitly cast the theta to a
@@ -1350,6 +1352,8 @@ def r_matrix(params: torch.Tensor) -> torch.Tensor:
     return torch.stack(
         [
             torch.cat([co, exp * jsi], dim=-1),
+            # torch.cat([torch.cos(theta / 2), -1j * torch.exp(-1j * phi) * torch.sin(theta/2)], dim=-1),
+            # torch.cat([-1j * torch.exp(1j * phi) * torch.sin(theta/2), torch.cos(theta/2)], dim=-1),
             torch.cat([torch.conj(exp) * jsi, co], dim=-1),
         ],
         dim=-2,

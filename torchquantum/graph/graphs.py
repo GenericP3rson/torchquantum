@@ -797,6 +797,7 @@ class QuantumGraph(object):
         modules are in the same schedule
         """
         try:
+            print(self.schedules)
             assert len(self.schedules) == 1
         except AssertionError:
             logger.exception(f"More than one block schedule in on module")
