@@ -31,12 +31,12 @@ from torchquantum.layer.layers import (
     Op2QAllLayer,
     RandomOp1All,
 )
+from torchquantum.operator.operators import R
 
 __all__ = [
     "GlobalR",
     "GlobalRX",
     "GlobalRY",
-    "GlobalRZ",
 ]
 
 
@@ -53,15 +53,13 @@ class GlobalR(tq.QuantumModule):
         super().__init__()
         self.ops_all = tq.QuantumModuleList()
         self.n_wires = n_wires
-        self.ops_list = [
-            {"name": "rot", "params": [phi, theta, 0], "wires": k}
-            for k in range(self.n_wires)
-        ]
+        self.params = torch.tensor([[theta, phi]])
+        self.operator = R() 
 
     @tq.static_support
     def forward(self, q_device):
-        qmodule = tq.QuantumModule.from_op_history(self.ops_list)
-        qmodule(q_device)
+        for k in range(self.n_wires):
+            self.operator(q_device, wires=k, params=self.params)
 
 
 class GlobalRX(GlobalR):
@@ -86,3 +84,6 @@ class GlobalRY(GlobalR):
     ):
         """Create the layer"""
         super().__init__(n_wires, theta, phi=torch.pi / 2)
+
+if __name__ == "__main__":
+    print(Rot(has_params=True, init_params=[3, 3, 0]))
