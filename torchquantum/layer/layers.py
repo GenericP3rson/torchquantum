@@ -256,17 +256,10 @@ class RandomOp1All(tq.QuantumModule):
             self.gate_all.append(op())
 
     @tq.static_support
-    def forward(self, q_device: tq.QuantumDevice, x):
+    def forward(self, q_device: tq.QuantumDevice):
         # op on all wires, assert the number of gate is the same as the number
-        # of wires in the device.
-        assert self.n_gate == q_device.n_wires, (
-            f"Number of gates ({self.n_wires}) is different from number "
-            f"of wires ({q_device.n_wires})!"
-        )
-
         for k in range(self.n_wires):
-            self.gate_all[k](q_device, wires=k, params=x[:, k])
-
+            self.gate_all[k](q_device, wires=k)
 
 class RandomLayer(tq.QuantumModule):
     """
