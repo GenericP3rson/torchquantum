@@ -212,6 +212,7 @@ def main():
         loss_list1.append(loss)
         scheduler.step()
 
+
     if train_model_without_qf:
         optimizer = optim.Adam(
             model_without_qf.parameters(), lr=5e-3, weight_decay=1e-4
@@ -255,6 +256,8 @@ def main():
                 "then try again."
             )
 
+    torch.save(model.state_dict(), "model_dict.pt")
+    model.load_state_dict(torch.load("model_dict.pt"))
 
 if __name__ == "__main__":
     main()
